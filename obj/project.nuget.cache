@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "hJtRNYzNx6tGCrmONB5blYO/hJ1uOqBk3Gce3U+J3tZkQjrg83PB/vr5WoGbsS/1au9mBB8fo4VmrIRpxEEtZA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\admin\\source\\repos\\Epic Tetris (Super Mario Maker 2)\\Epic Tetris (Super Mario Maker 2)\\Epic Tetris (Super Mario Maker 2).csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\admin\\.nuget\\packages\\microsoft.windows.sdk.net.ref\\10.0.19041.27\\microsoft.windows.sdk.net.ref.10.0.19041.27.nupkg.sha512"
+  ],
+  "logs": []
+}

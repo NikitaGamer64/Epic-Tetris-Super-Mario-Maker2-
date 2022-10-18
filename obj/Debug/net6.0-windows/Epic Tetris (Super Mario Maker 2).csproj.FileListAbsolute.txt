@@ -1,0 +1,17 @@
+C:\Users\admin\source\repos\Epic Tetris (Super Mario Maker 2)\Epic Tetris (Super Mario Maker 2)\bin\Debug\net6.0-windows\Epic Tetris (Super Mario Maker 2).deps.json
+C:\Users\admin\source\repos\Epic Tetris (Super Mario Maker 2)\Epic Tetris (Super Mario Maker 2)\bin\Debug\net6.0-windows\Epic Tetris (Super Mario Maker 2).dll
+C:\Users\admin\source\repos\Epic Tetris (Super Mario Maker 2)\Epic Tetris (Super Mario Maker 2)\bin\Debug\net6.0-windows\ref\Epic Tetris (Super Mario Maker 2).dll
+C:\Users\admin\source\repos\Epic Tetris (Super Mario Maker 2)\Epic Tetris (Super Mario Maker 2)\bin\Debug\net6.0-windows\Epic Tetris (Super Mario Maker 2).pdb
+C:\Users\admin\source\repos\Epic Tetris (Super Mario Maker 2)\Epic Tetris (Super Mario Maker 2)\obj\Debug\net6.0-windows\Epic Tetris (Super Mario Maker 2).csproj.AssemblyReference.cache
+C:\Users\admin\source\repos\Epic Tetris (Super Mario Maker 2)\Epic Tetris (Super Mario Maker 2)\obj\Debug\net6.0-windows\Epic Tetris (Super Mario Maker 2).GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\admin\source\repos\Epic Tetris (Super Mario Maker 2)\Epic Tetris (Super Mario Maker 2)\obj\Debug\net6.0-windows\Epic Tetris (Super Mario Maker 2).AssemblyInfoInputs.cache
+C:\Users\admin\source\repos\Epic Tetris (Super Mario Maker 2)\Epic Tetris (Super Mario Maker 2)\obj\Debug\net6.0-windows\Epic Tetris (Super Mario Maker 2).AssemblyInfo.cs
+C:\Users\admin\source\repos\Epic Tetris (Super Mario Maker 2)\Epic Tetris (Super Mario Maker 2)\obj\Debug\net6.0-windows\Epic Tetris (Super Mario Maker 2).csproj.CoreCompileInputs.cache
+C:\Users\admin\source\repos\Epic Tetris (Super Mario Maker 2)\Epic Tetris (Super Mario Maker 2)\obj\Debug\net6.0-windows\Epic Tetris (Super Mario Maker 2).dll
+C:\Users\admin\source\repos\Epic Tetris (Super Mario Maker 2)\Epic Tetris (Super Mario Maker 2)\obj\Debug\net6.0-windows\ref\Epic Tetris (Super Mario Maker 2).dll
+C:\Users\admin\source\repos\Epic Tetris (Super Mario Maker 2)\Epic Tetris (Super Mario Maker 2)\obj\Debug\net6.0-windows\Epic Tetris (Super Mario Maker 2).pdb
+C:\Users\admin\source\repos\Epic Tetris (Super Mario Maker 2)\Epic Tetris (Super Mario Maker 2)\obj\Debug\net6.0-windows\MainWindow.g.cs
+C:\Users\admin\source\repos\Epic Tetris (Super Mario Maker 2)\Epic Tetris (Super Mario Maker 2)\obj\Debug\net6.0-windows\Epic Tetris (Super Mario Maker 2)_MarkupCompile.cache
+C:\Users\admin\source\repos\Epic Tetris (Super Mario Maker 2)\Epic Tetris (Super Mario Maker 2)\obj\Debug\net6.0-windows\Epic Tetris (Super Mario Maker 2)_MarkupCompile.lref
+C:\Users\admin\source\repos\Epic Tetris (Super Mario Maker 2)\Epic Tetris (Super Mario Maker 2)\obj\Debug\net6.0-windows\MainWindow.baml
+C:\Users\admin\source\repos\Epic Tetris (Super Mario Maker 2)\Epic Tetris (Super Mario Maker 2)\obj\Debug\net6.0-windows\Epic Tetris (Super Mario Maker 2).g.resources
