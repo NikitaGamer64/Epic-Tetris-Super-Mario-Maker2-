@@ -1,0 +1,73 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0-windows10.0.19041.0</TargetFramework>
+    <RootNamespace>Epic_Tetris_Super_Mario_Maker_2</RootNamespace>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>Assets\Icon.ico</ApplicationIcon>
+    <SupportedOSPlatformVersion>10.0.19041.0</SupportedOSPlatformVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Assets.old\Background.png" />
+    <None Remove="Assets.old\Block-Empty.png" />
+    <None Remove="Assets.old\Block-I.png" />
+    <None Remove="Assets.old\Block-J.png" />
+    <None Remove="Assets.old\Block-L.png" />
+    <None Remove="Assets.old\Block-O.png" />
+    <None Remove="Assets.old\Block-S.png" />
+    <None Remove="Assets.old\Block-T.png" />
+    <None Remove="Assets.old\Block-Z.png" />
+    <None Remove="Assets.old\Icon.ico" />
+    <None Remove="Assets.old\TileBlue.png" />
+    <None Remove="Assets.old\TileCyan.png" />
+    <None Remove="Assets.old\TileEmpty.png" />
+    <None Remove="Assets.old\TileGreen.png" />
+    <None Remove="Assets.old\TileOrange.png" />
+    <None Remove="Assets.old\TilePurple.png" />
+    <None Remove="Assets.old\TileRed.png" />
+    <None Remove="Assets.old\TileYellow.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\Icon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets.old\Background.png" />
+    <Resource Include="Assets.old\Block-Empty.png" />
+    <Resource Include="Assets.old\Block-I.png" />
+    <Resource Include="Assets.old\Block-J.png" />
+    <Resource Include="Assets.old\Block-L.png" />
+    <Resource Include="Assets.old\Block-O.png" />
+    <Resource Include="Assets.old\Block-S.png" />
+    <Resource Include="Assets.old\Block-T.png" />
+    <Resource Include="Assets.old\Block-Z.png" />
+    <Resource Include="Assets.old\Icon.ico" />
+    <Resource Include="Assets.old\TileBlue.png" />
+    <Resource Include="Assets.old\TileCyan.png" />
+    <Resource Include="Assets.old\TileEmpty.png" />
+    <Resource Include="Assets.old\TileGreen.png" />
+    <Resource Include="Assets.old\TileOrange.png" />
+    <Resource Include="Assets.old\TilePurple.png" />
+    <Resource Include="Assets.old\TileRed.png" />
+    <Resource Include="Assets.old\TileYellow.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+</Project>
