@@ -21,11 +21,26 @@ namespace Epic_Tetris_Super_Mario_Maker_2
     {
         private readonly ImageSource[] tileImages = new ImageSource[]
         {
-            new BitmapImage(new Uri("Assets/TileEmpty.png", UriKind.Relative))
-            //There was an old tile map with different algorithm.
+            new BitmapImage(new Uri("Assets/TileEmpty.png", UriKind.Relative)),
+            new BitmapImage(new Uri("Assets/SMB1/Ground/Full1.png", UriKind.Relative)),
+            new BitmapImage(new Uri("Assets/SMB1/Ground/Full1.png", UriKind.Relative)),
+            new BitmapImage(new Uri("Assets/SMB1/Ground/Full1.png", UriKind.Relative)),
+            new BitmapImage(new Uri("Assets/SMB1/Ground/Full1.png", UriKind.Relative)),
+            new BitmapImage(new Uri("Assets/SMB1/Ground/Full1.png", UriKind.Relative)),
+            new BitmapImage(new Uri("Assets/SMB1/Ground/Full1.png", UriKind.Relative)),
+            new BitmapImage(new Uri("Assets/SMB1/Ground/Full1.png", UriKind.Relative))
+            //This is a former tile map with different algorithm.
         };
         private readonly ImageSource[] blockImages = new ImageSource[]
         {
+            new BitmapImage(new Uri("Assets/Block-Empty.png", UriKind.Relative)),
+            new BitmapImage(new Uri("Assets/SMB1/Ground/Block-I.png", UriKind.Relative)),
+            new BitmapImage(new Uri("Assets/SMB1/Ground/Block-J.png", UriKind.Relative)),
+            new BitmapImage(new Uri("Assets/SMB1/Ground/Block-L.png", UriKind.Relative)),
+            new BitmapImage(new Uri("Assets/SMB1/Ground/Block-O.png", UriKind.Relative)),
+            new BitmapImage(new Uri("Assets/SMB1/Ground/Block-S.png", UriKind.Relative)),
+            new BitmapImage(new Uri("Assets/SMB1/Ground/Block-T.png", UriKind.Relative)),
+            new BitmapImage(new Uri("Assets/SMB1/Ground/Block-Z.png", UriKind.Relative)),
             //This is a future set of blocks which will appear in Hold and Next.
         };
 
@@ -68,6 +83,7 @@ namespace Epic_Tetris_Super_Mario_Maker_2
                 for (int c = 0; c < grid.Columns; c++)
                 {
                     int id = grid[r, c];
+                    imageControls[r, c].Opacity = 1;
                     imageControls[r, c].Source = tileImages[id];
                 }
             }
@@ -76,6 +92,7 @@ namespace Epic_Tetris_Super_Mario_Maker_2
         {
             foreach (Position p in block.TilePositions())
             {
+                imageControls[p.Row, p.Column].Opacity = 1;
                 imageControls[p.Row, p.Column].Source = tileImages[block.Id];
                 //Is this supposed to be changed?
             }
@@ -85,12 +102,22 @@ namespace Epic_Tetris_Super_Mario_Maker_2
             Block next = blockQueue.NextBlock;
             NextImage.Source = blockImages[next.Id];
         }
+        private void DrawGhostBlock(Block block)
+        {
+            int dropDistance = gameState.BlockDropDistance();
+            foreach (Position p in block.TilePositions())
+            {
+                imageControls[p.Row + dropDistance, p.Column].Opacity = 0.25;
+                imageControls[p.Row + dropDistance, p.Column].Source = tileImages[block.Id];
+            }
+        }
         private void Draw(GameState gameState)
         {
             DrawGrid(gameState.GameGrid);
+            DrawGhostBlock(gameState.CurrentBlock);
             DrawBlock(gameState.CurrentBlock);
             DrawNextBlock(gameState.BlockQueue);
-            ScoreText.Text =$"Score: {gameState.Score}";
+            ScoreText.Text = $"Score: {gameState.Score}";
         }
         private async Task GameLoop()
         {
@@ -130,6 +157,9 @@ namespace Epic_Tetris_Super_Mario_Maker_2
                 case Key.Z:
                     gameState.RotateBlockCCW();
                     break;
+                case Key.Space:
+                    gameState.DropBlock();
+                    break;
                 default:
                     return;
             }
@@ -144,6 +174,10 @@ namespace Epic_Tetris_Super_Mario_Maker_2
             gameState = new GameState();
             GameOverMenu.Visibility = Visibility.Hidden;
             await GameLoop();
+        }
+        private void Quit_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }

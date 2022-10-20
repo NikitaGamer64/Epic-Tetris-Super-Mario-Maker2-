@@ -18,7 +18,7 @@ namespace Epic_Tetris_Super_Mario_Maker_2
             new TBlock(),
             new ZBlock()
         };
-        private readonly Random random = new();
+        private readonly Random random = new Random();
         public Block NextBlock { get; private set; }
         public BlockQueue()
         {

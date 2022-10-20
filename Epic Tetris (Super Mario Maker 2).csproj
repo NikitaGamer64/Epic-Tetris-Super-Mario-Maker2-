@@ -1,73 +1,884 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
-    <TargetFramework>net6.0-windows10.0.19041.0</TargetFramework>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{73216E15-22FC-4BF3-86F0-C224338BB19E}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
     <RootNamespace>Epic_Tetris_Super_Mario_Maker_2</RootNamespace>
-    <Nullable>enable</Nullable>
-    <UseWPF>true</UseWPF>
-    <ApplicationIcon>Assets\Icon.ico</ApplicationIcon>
-    <SupportedOSPlatformVersion>10.0.19041.0</SupportedOSPlatformVersion>
+    <AssemblyName>Epic Tetris %28Super Mario Maker 2%29</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
-
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>obj\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
-    <None Remove="Assets.old\Background.png" />
-    <None Remove="Assets.old\Block-Empty.png" />
-    <None Remove="Assets.old\Block-I.png" />
-    <None Remove="Assets.old\Block-J.png" />
-    <None Remove="Assets.old\Block-L.png" />
-    <None Remove="Assets.old\Block-O.png" />
-    <None Remove="Assets.old\Block-S.png" />
-    <None Remove="Assets.old\Block-T.png" />
-    <None Remove="Assets.old\Block-Z.png" />
-    <None Remove="Assets.old\Icon.ico" />
-    <None Remove="Assets.old\TileBlue.png" />
-    <None Remove="Assets.old\TileCyan.png" />
-    <None Remove="Assets.old\TileEmpty.png" />
-    <None Remove="Assets.old\TileGreen.png" />
-    <None Remove="Assets.old\TileOrange.png" />
-    <None Remove="Assets.old\TilePurple.png" />
-    <None Remove="Assets.old\TileRed.png" />
-    <None Remove="Assets.old\TileYellow.png" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
   </ItemGroup>
-
   <ItemGroup>
-    <Content Include="Assets\Icon.ico" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="Assets.old\Background.png" />
-    <Resource Include="Assets.old\Block-Empty.png" />
-    <Resource Include="Assets.old\Block-I.png" />
-    <Resource Include="Assets.old\Block-J.png" />
-    <Resource Include="Assets.old\Block-L.png" />
-    <Resource Include="Assets.old\Block-O.png" />
-    <Resource Include="Assets.old\Block-S.png" />
-    <Resource Include="Assets.old\Block-T.png" />
-    <Resource Include="Assets.old\Block-Z.png" />
-    <Resource Include="Assets.old\Icon.ico" />
-    <Resource Include="Assets.old\TileBlue.png" />
-    <Resource Include="Assets.old\TileCyan.png" />
-    <Resource Include="Assets.old\TileEmpty.png" />
-    <Resource Include="Assets.old\TileGreen.png" />
-    <Resource Include="Assets.old\TileOrange.png" />
-    <Resource Include="Assets.old\TilePurple.png" />
-    <Resource Include="Assets.old\TileRed.png" />
-    <Resource Include="Assets.old\TileYellow.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Update="Properties\Settings.Designer.cs">
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Blocks\IBlock.cs" />
+    <Compile Include="Blocks\JBlock.cs" />
+    <Compile Include="Blocks\LBlock.cs" />
+    <Compile Include="Blocks\OBlock.cs" />
+    <Compile Include="Blocks\SBlock.cs" />
+    <Compile Include="Blocks\TBlock.cs" />
+    <Compile Include="Blocks\ZBlock.cs" />
+    <Compile Include="Main.cs" />
+    <Compile Include="obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
+    <Compile Include="Settings.cs" />
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BlockQueue.cs" />
+    <Compile Include="Blocks.cs" />
+    <Compile Include="DesignSettings.cs" />
+    <Compile Include="GameGrid.cs" />
+    <Compile Include="GameState.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
-
   <ItemGroup>
-    <None Update="Properties\Settings.settings">
+    <Compile Include="Position.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="obj\Debug\Epic Tetris %28Super Mario Maker 2%29.csproj.SuggestedBindingRedirects.cache" />
+    <None Include="obj\Debug\Epic Tetris %28Super Mario Maker 2%29_MarkupCompile.cache" />
+    <None Include="obj\Debug\Epic Tetris %28Super Mario Maker 2%29_MarkupCompile.i.cache" />
+    <None Include="obj\Debug\Epic Tetris %28Super Mario Maker 2%29_MarkupCompile.lref" />
+    <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
-
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets\NSMBU\Airship\" />
+    <Folder Include="Assets\NSMBU\Castle\" />
+    <Folder Include="Assets\NSMBU\Desert\" />
+    <Folder Include="Assets\NSMBU\Forest\" />
+    <Folder Include="Assets\NSMBU\GhostHouse\" />
+    <Folder Include="Assets\NSMBU\Ground\" />
+    <Folder Include="Assets\NSMBU\Sky\" />
+    <Folder Include="Assets\NSMBU\Snow\" />
+    <Folder Include="Assets\NSMBU\Underground\" />
+    <Folder Include="Assets\NSMBU\Underwater\" />
+    <Folder Include="Assets\SMB3\Airship\" />
+    <Folder Include="Assets\SMB3\Castle\" />
+    <Folder Include="Assets\SMB3\Desert\" />
+    <Folder Include="Assets\SMB3\Forest\" />
+    <Folder Include="Assets\SMB3\GhostHouse\" />
+    <Folder Include="Assets\SMB3\Ground\" />
+    <Folder Include="Assets\SMB3\Sky\" />
+    <Folder Include="Assets\SMB3\Snow\" />
+    <Folder Include="Assets\SMB3\Underground\" />
+    <Folder Include="Assets\SMB3\Underwater\" />
+    <Folder Include="Assets\SMW\Airship\" />
+    <Folder Include="Assets\SMW\Castle\" />
+    <Folder Include="Assets\SMW\Desert\" />
+    <Folder Include="Assets\SMW\Forest\" />
+    <Folder Include="Assets\SMW\GhostHouse\" />
+    <Folder Include="Assets\SMW\Ground\" />
+    <Folder Include="Assets\SMW\Sky\" />
+    <Folder Include="Assets\SMW\Snow\" />
+    <Folder Include="Assets\SMW\Underground\" />
+    <Folder Include="Assets\SMW\Underwater\" />
+    <Folder Include="bin\Debug\" />
+    <Folder Include="bin\Release\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Icon.ico" />
+    <Resource Include="Assets\SMB1\Airship\Background.png" />
+    <Resource Include="Assets\SMB1\Airship\Bottom1.png" />
+    <Resource Include="Assets\SMB1\Airship\Bottom2.png" />
+    <Resource Include="Assets\SMB1\Airship\Bottom3.png" />
+    <Resource Include="Assets\SMB1\Airship\BottomLeft.png" />
+    <Resource Include="Assets\SMB1\Airship\BottomLeftExt.png" />
+    <Resource Include="Assets\SMB1\Airship\BottomLeft_2.png" />
+    <Resource Include="Assets\SMB1\Airship\BottomLeft_PipeDown.png" />
+    <Resource Include="Assets\SMB1\Airship\BottomLeft_PipeDownLeft.png" />
+    <Resource Include="Assets\SMB1\Airship\BottomLeft_PipeLeft.png" />
+    <Resource Include="Assets\SMB1\Airship\BottomRight.png" />
+    <Resource Include="Assets\SMB1\Airship\BottomRightExt.png" />
+    <Resource Include="Assets\SMB1\Airship\BottomRight_2.png" />
+    <Resource Include="Assets\SMB1\Airship\BottomRight_PipeDown.png" />
+    <Resource Include="Assets\SMB1\Airship\BottomRight_PipeDownRight.png" />
+    <Resource Include="Assets\SMB1\Airship\BottomRight_PipeRight.png" />
+    <Resource Include="Assets\SMB1\Airship\Bottom_3.png" />
+    <Resource Include="Assets\SMB1\Airship\Bottom_PipeDown.png" />
+    <Resource Include="Assets\SMB1\Airship\Full1.png" />
+    <Resource Include="Assets\SMB1\Airship\Full2.png" />
+    <Resource Include="Assets\SMB1\Airship\Full3.png" />
+    <Resource Include="Assets\SMB1\Airship\Full_3.png" />
+    <Resource Include="Assets\SMB1\Airship\HorPipeLeft.png" />
+    <Resource Include="Assets\SMB1\Airship\HorPipeMid1.png" />
+    <Resource Include="Assets\SMB1\Airship\HorPipeMid2.png" />
+    <Resource Include="Assets\SMB1\Airship\HorPipeMid3.png" />
+    <Resource Include="Assets\SMB1\Airship\HorPipeMid_3.png" />
+    <Resource Include="Assets\SMB1\Airship\HorPipeRight.png" />
+    <Resource Include="Assets\SMB1\Airship\Left1.png" />
+    <Resource Include="Assets\SMB1\Airship\Left2.png" />
+    <Resource Include="Assets\SMB1\Airship\Left3.png" />
+    <Resource Include="Assets\SMB1\Airship\Left_2.png" />
+    <Resource Include="Assets\SMB1\Airship\Left_3.png" />
+    <Resource Include="Assets\SMB1\Airship\Left_PipeLeft.png" />
+    <Resource Include="Assets\SMB1\Airship\Pipe4Way.png" />
+    <Resource Include="Assets\SMB1\Airship\PipeDownLeft.png" />
+    <Resource Include="Assets\SMB1\Airship\PipeDownLeftRight.png" />
+    <Resource Include="Assets\SMB1\Airship\PipeDownRight.png" />
+    <Resource Include="Assets\SMB1\Airship\PipeUpDownLeft.png" />
+    <Resource Include="Assets\SMB1\Airship\PipeUpDownRight.png" />
+    <Resource Include="Assets\SMB1\Airship\PipeUpLeft.png" />
+    <Resource Include="Assets\SMB1\Airship\PipeUpLeftRight.png" />
+    <Resource Include="Assets\SMB1\Airship\PipeUpRight.png" />
+    <Resource Include="Assets\SMB1\Airship\Right1.png" />
+    <Resource Include="Assets\SMB1\Airship\Right2.png" />
+    <Resource Include="Assets\SMB1\Airship\Right3.png" />
+    <Resource Include="Assets\SMB1\Airship\Right_2.png" />
+    <Resource Include="Assets\SMB1\Airship\Right_3.png" />
+    <Resource Include="Assets\SMB1\Airship\Right_PipeRight.png" />
+    <Resource Include="Assets\SMB1\Airship\Single.png" />
+    <Resource Include="Assets\SMB1\Airship\Top1.png" />
+    <Resource Include="Assets\SMB1\Airship\Top2.png" />
+    <Resource Include="Assets\SMB1\Airship\Top3.png" />
+    <Resource Include="Assets\SMB1\Airship\TopLeft.png" />
+    <Resource Include="Assets\SMB1\Airship\TopLeftExt.png" />
+    <Resource Include="Assets\SMB1\Airship\TopLeft_2.png" />
+    <Resource Include="Assets\SMB1\Airship\TopLeft_BottomRight.png" />
+    <Resource Include="Assets\SMB1\Airship\TopLeft_PipeLeft.png" />
+    <Resource Include="Assets\SMB1\Airship\TopLeft_PipeUp.png" />
+    <Resource Include="Assets\SMB1\Airship\TopLeft_PipeUpLeft.png" />
+    <Resource Include="Assets\SMB1\Airship\TopRight.png" />
+    <Resource Include="Assets\SMB1\Airship\TopRightExt.png" />
+    <Resource Include="Assets\SMB1\Airship\TopRight_2.png" />
+    <Resource Include="Assets\SMB1\Airship\TopRight_BottomLeft.png" />
+    <Resource Include="Assets\SMB1\Airship\TopRight_PipeRight.png" />
+    <Resource Include="Assets\SMB1\Airship\TopRight_PipeUp.png" />
+    <Resource Include="Assets\SMB1\Airship\TopRight_PipeUpRight.png" />
+    <Resource Include="Assets\SMB1\Airship\Top_3.png" />
+    <Resource Include="Assets\SMB1\Airship\Top_PipeUp.png" />
+    <Resource Include="Assets\SMB1\Airship\VerPipeBottom.png" />
+    <Resource Include="Assets\SMB1\Airship\VerPipeMid.png" />
+    <Resource Include="Assets\SMB1\Airship\VerPipeTop.png" />
+    <Resource Include="Assets\SMB1\Castle\Background.png" />
+    <Resource Include="Assets\SMB1\Castle\Bottom1.png" />
+    <Resource Include="Assets\SMB1\Castle\Bottom2.png" />
+    <Resource Include="Assets\SMB1\Castle\Bottom3.png" />
+    <Resource Include="Assets\SMB1\Castle\BottomLeft.png" />
+    <Resource Include="Assets\SMB1\Castle\BottomLeftExt.png" />
+    <Resource Include="Assets\SMB1\Castle\BottomLeft_2.png" />
+    <Resource Include="Assets\SMB1\Castle\BottomLeft_PipeDown.png" />
+    <Resource Include="Assets\SMB1\Castle\BottomLeft_PipeDownLeft.png" />
+    <Resource Include="Assets\SMB1\Castle\BottomLeft_PipeLeft.png" />
+    <Resource Include="Assets\SMB1\Castle\BottomRight.png" />
+    <Resource Include="Assets\SMB1\Castle\BottomRightExt.png" />
+    <Resource Include="Assets\SMB1\Castle\BottomRight_2.png" />
+    <Resource Include="Assets\SMB1\Castle\BottomRight_PipeDown.png" />
+    <Resource Include="Assets\SMB1\Castle\BottomRight_PipeDownRight.png" />
+    <Resource Include="Assets\SMB1\Castle\BottomRight_PipeRight.png" />
+    <Resource Include="Assets\SMB1\Castle\Bottom_3.png" />
+    <Resource Include="Assets\SMB1\Castle\Bottom_PipeDown.png" />
+    <Resource Include="Assets\SMB1\Castle\Full1.png" />
+    <Resource Include="Assets\SMB1\Castle\Full2.png" />
+    <Resource Include="Assets\SMB1\Castle\Full3.png" />
+    <Resource Include="Assets\SMB1\Castle\Full_3.png" />
+    <Resource Include="Assets\SMB1\Castle\HorPipeLeft.png" />
+    <Resource Include="Assets\SMB1\Castle\HorPipeMid1.png" />
+    <Resource Include="Assets\SMB1\Castle\HorPipeMid2.png" />
+    <Resource Include="Assets\SMB1\Castle\HorPipeMid3.png" />
+    <Resource Include="Assets\SMB1\Castle\HorPipeMid_3.png" />
+    <Resource Include="Assets\SMB1\Castle\HorPipeRight.png" />
+    <Resource Include="Assets\SMB1\Castle\Left1.png" />
+    <Resource Include="Assets\SMB1\Castle\Left2.png" />
+    <Resource Include="Assets\SMB1\Castle\Left3.png" />
+    <Resource Include="Assets\SMB1\Castle\Left_2.png" />
+    <Resource Include="Assets\SMB1\Castle\Left_3.png" />
+    <Resource Include="Assets\SMB1\Castle\Left_PipeLeft.png" />
+    <Resource Include="Assets\SMB1\Castle\Pipe4Way.png" />
+    <Resource Include="Assets\SMB1\Castle\PipeDownLeft.png" />
+    <Resource Include="Assets\SMB1\Castle\PipeDownLeftRight.png" />
+    <Resource Include="Assets\SMB1\Castle\PipeDownRight.png" />
+    <Resource Include="Assets\SMB1\Castle\PipeUpDownLeft.png" />
+    <Resource Include="Assets\SMB1\Castle\PipeUpDownRight.png" />
+    <Resource Include="Assets\SMB1\Castle\PipeUpLeft.png" />
+    <Resource Include="Assets\SMB1\Castle\PipeUpLeftRight.png" />
+    <Resource Include="Assets\SMB1\Castle\PipeUpRight.png" />
+    <Resource Include="Assets\SMB1\Castle\Right1.png" />
+    <Resource Include="Assets\SMB1\Castle\Right2.png" />
+    <Resource Include="Assets\SMB1\Castle\Right3.png" />
+    <Resource Include="Assets\SMB1\Castle\Right_2.png" />
+    <Resource Include="Assets\SMB1\Castle\Right_3.png" />
+    <Resource Include="Assets\SMB1\Castle\Right_PipeRight.png" />
+    <Resource Include="Assets\SMB1\Castle\Single.png" />
+    <Resource Include="Assets\SMB1\Castle\Top1.png" />
+    <Resource Include="Assets\SMB1\Castle\Top2.png" />
+    <Resource Include="Assets\SMB1\Castle\Top3.png" />
+    <Resource Include="Assets\SMB1\Castle\TopLeft.png" />
+    <Resource Include="Assets\SMB1\Castle\TopLeftExt.png" />
+    <Resource Include="Assets\SMB1\Castle\TopLeft_2.png" />
+    <Resource Include="Assets\SMB1\Castle\TopLeft_BottomRight.png" />
+    <Resource Include="Assets\SMB1\Castle\TopLeft_PipeLeft.png" />
+    <Resource Include="Assets\SMB1\Castle\TopLeft_PipeUp.png" />
+    <Resource Include="Assets\SMB1\Castle\TopLeft_PipeUpLeft.png" />
+    <Resource Include="Assets\SMB1\Castle\TopRight.png" />
+    <Resource Include="Assets\SMB1\Castle\TopRightExt.png" />
+    <Resource Include="Assets\SMB1\Castle\TopRight_2.png" />
+    <Resource Include="Assets\SMB1\Castle\TopRight_BottomLeft.png" />
+    <Resource Include="Assets\SMB1\Castle\TopRight_PipeRight.png" />
+    <Resource Include="Assets\SMB1\Castle\TopRight_PipeUp.png" />
+    <Resource Include="Assets\SMB1\Castle\TopRight_PipeUpRight.png" />
+    <Resource Include="Assets\SMB1\Castle\Top_3.png" />
+    <Resource Include="Assets\SMB1\Castle\Top_PipeUp.png" />
+    <Resource Include="Assets\SMB1\Castle\VerPipeBottom.png" />
+    <Resource Include="Assets\SMB1\Castle\VerPipeMid.png" />
+    <Resource Include="Assets\SMB1\Castle\VerPipeTop.png" />
+    <Resource Include="Assets\SMB1\Desert\Background.png" />
+    <Resource Include="Assets\SMB1\Desert\Bottom1.png" />
+    <Resource Include="Assets\SMB1\Desert\Bottom2.png" />
+    <Resource Include="Assets\SMB1\Desert\Bottom3.png" />
+    <Resource Include="Assets\SMB1\Desert\BottomLeft.png" />
+    <Resource Include="Assets\SMB1\Desert\BottomLeftExt.png" />
+    <Resource Include="Assets\SMB1\Desert\BottomLeft_2.png" />
+    <Resource Include="Assets\SMB1\Desert\BottomLeft_PipeDown.png" />
+    <Resource Include="Assets\SMB1\Desert\BottomLeft_PipeDownLeft.png" />
+    <Resource Include="Assets\SMB1\Desert\BottomLeft_PipeLeft.png" />
+    <Resource Include="Assets\SMB1\Desert\BottomRight.png" />
+    <Resource Include="Assets\SMB1\Desert\BottomRightExt.png" />
+    <Resource Include="Assets\SMB1\Desert\BottomRight_2.png" />
+    <Resource Include="Assets\SMB1\Desert\BottomRight_PipeDown.png" />
+    <Resource Include="Assets\SMB1\Desert\BottomRight_PipeDownRight.png" />
+    <Resource Include="Assets\SMB1\Desert\BottomRight_PipeRight.png" />
+    <Resource Include="Assets\SMB1\Desert\Bottom_3.png" />
+    <Resource Include="Assets\SMB1\Desert\Bottom_PipeDown.png" />
+    <Resource Include="Assets\SMB1\Desert\Full1.png" />
+    <Resource Include="Assets\SMB1\Desert\Full2.png" />
+    <Resource Include="Assets\SMB1\Desert\Full3.png" />
+    <Resource Include="Assets\SMB1\Desert\Full_3.png" />
+    <Resource Include="Assets\SMB1\Desert\HorPipeLeft.png" />
+    <Resource Include="Assets\SMB1\Desert\HorPipeMid1.png" />
+    <Resource Include="Assets\SMB1\Desert\HorPipeMid2.png" />
+    <Resource Include="Assets\SMB1\Desert\HorPipeMid3.png" />
+    <Resource Include="Assets\SMB1\Desert\HorPipeMid_3.png" />
+    <Resource Include="Assets\SMB1\Desert\HorPipeRight.png" />
+    <Resource Include="Assets\SMB1\Desert\Left1.png" />
+    <Resource Include="Assets\SMB1\Desert\Left2.png" />
+    <Resource Include="Assets\SMB1\Desert\Left3.png" />
+    <Resource Include="Assets\SMB1\Desert\Left_2.png" />
+    <Resource Include="Assets\SMB1\Desert\Left_3.png" />
+    <Resource Include="Assets\SMB1\Desert\Left_PipeLeft.png" />
+    <Resource Include="Assets\SMB1\Desert\Pipe4Way.png" />
+    <Resource Include="Assets\SMB1\Desert\PipeDownLeft.png" />
+    <Resource Include="Assets\SMB1\Desert\PipeDownLeftRight.png" />
+    <Resource Include="Assets\SMB1\Desert\PipeDownRight.png" />
+    <Resource Include="Assets\SMB1\Desert\PipeUpDownLeft.png" />
+    <Resource Include="Assets\SMB1\Desert\PipeUpDownRight.png" />
+    <Resource Include="Assets\SMB1\Desert\PipeUpLeft.png" />
+    <Resource Include="Assets\SMB1\Desert\PipeUpLeftRight.png" />
+    <Resource Include="Assets\SMB1\Desert\PipeUpRight.png" />
+    <Resource Include="Assets\SMB1\Desert\Right1.png" />
+    <Resource Include="Assets\SMB1\Desert\Right2.png" />
+    <Resource Include="Assets\SMB1\Desert\Right3.png" />
+    <Resource Include="Assets\SMB1\Desert\Right_2.png" />
+    <Resource Include="Assets\SMB1\Desert\Right_3.png" />
+    <Resource Include="Assets\SMB1\Desert\Right_PipeRight.png" />
+    <Resource Include="Assets\SMB1\Desert\Single.png" />
+    <Resource Include="Assets\SMB1\Desert\Top1.png" />
+    <Resource Include="Assets\SMB1\Desert\Top2.png" />
+    <Resource Include="Assets\SMB1\Desert\Top3.png" />
+    <Resource Include="Assets\SMB1\Desert\TopLeft.png" />
+    <Resource Include="Assets\SMB1\Desert\TopLeftExt.png" />
+    <Resource Include="Assets\SMB1\Desert\TopLeft_2.png" />
+    <Resource Include="Assets\SMB1\Desert\TopLeft_BottomRight.png" />
+    <Resource Include="Assets\SMB1\Desert\TopLeft_PipeLeft.png" />
+    <Resource Include="Assets\SMB1\Desert\TopLeft_PipeUp.png" />
+    <Resource Include="Assets\SMB1\Desert\TopLeft_PipeUpLeft.png" />
+    <Resource Include="Assets\SMB1\Desert\TopRight.png" />
+    <Resource Include="Assets\SMB1\Desert\TopRightExt.png" />
+    <Resource Include="Assets\SMB1\Desert\TopRight_2.png" />
+    <Resource Include="Assets\SMB1\Desert\TopRight_BottomLeft.png" />
+    <Resource Include="Assets\SMB1\Desert\TopRight_PipeRight.png" />
+    <Resource Include="Assets\SMB1\Desert\TopRight_PipeUp.png" />
+    <Resource Include="Assets\SMB1\Desert\TopRight_PipeUpRight.png" />
+    <Resource Include="Assets\SMB1\Desert\Top_3.png" />
+    <Resource Include="Assets\SMB1\Desert\Top_PipeUp.png" />
+    <Resource Include="Assets\SMB1\Desert\VerPipeBottom.png" />
+    <Resource Include="Assets\SMB1\Desert\VerPipeMid.png" />
+    <Resource Include="Assets\SMB1\Desert\VerPipeTop.png" />
+    <Resource Include="Assets\SMB1\Forest\Background.png" />
+    <Resource Include="Assets\SMB1\Forest\Bottom1.png" />
+    <Resource Include="Assets\SMB1\Forest\Bottom2.png" />
+    <Resource Include="Assets\SMB1\Forest\Bottom3.png" />
+    <Resource Include="Assets\SMB1\Forest\BottomLeft.png" />
+    <Resource Include="Assets\SMB1\Forest\BottomLeftExt.png" />
+    <Resource Include="Assets\SMB1\Forest\BottomLeft_2.png" />
+    <Resource Include="Assets\SMB1\Forest\BottomLeft_PipeDown.png" />
+    <Resource Include="Assets\SMB1\Forest\BottomLeft_PipeDownLeft.png" />
+    <Resource Include="Assets\SMB1\Forest\BottomLeft_PipeLeft.png" />
+    <Resource Include="Assets\SMB1\Forest\BottomRight.png" />
+    <Resource Include="Assets\SMB1\Forest\BottomRightExt.png" />
+    <Resource Include="Assets\SMB1\Forest\BottomRight_2.png" />
+    <Resource Include="Assets\SMB1\Forest\BottomRight_PipeDown.png" />
+    <Resource Include="Assets\SMB1\Forest\BottomRight_PipeDownRight.png" />
+    <Resource Include="Assets\SMB1\Forest\BottomRight_PipeRight.png" />
+    <Resource Include="Assets\SMB1\Forest\Bottom_3.png" />
+    <Resource Include="Assets\SMB1\Forest\Bottom_PipeDown.png" />
+    <Resource Include="Assets\SMB1\Forest\Full1.png" />
+    <Resource Include="Assets\SMB1\Forest\Full2.png" />
+    <Resource Include="Assets\SMB1\Forest\Full3.png" />
+    <Resource Include="Assets\SMB1\Forest\Full_3.png" />
+    <Resource Include="Assets\SMB1\Forest\HorPipeLeft.png" />
+    <Resource Include="Assets\SMB1\Forest\HorPipeMid1.png" />
+    <Resource Include="Assets\SMB1\Forest\HorPipeMid2.png" />
+    <Resource Include="Assets\SMB1\Forest\HorPipeMid3.png" />
+    <Resource Include="Assets\SMB1\Forest\HorPipeMid_3.png" />
+    <Resource Include="Assets\SMB1\Forest\HorPipeRight.png" />
+    <Resource Include="Assets\SMB1\Forest\Left1.png" />
+    <Resource Include="Assets\SMB1\Forest\Left2.png" />
+    <Resource Include="Assets\SMB1\Forest\Left3.png" />
+    <Resource Include="Assets\SMB1\Forest\Left_2.png" />
+    <Resource Include="Assets\SMB1\Forest\Left_3.png" />
+    <Resource Include="Assets\SMB1\Forest\Left_PipeLeft.png" />
+    <Resource Include="Assets\SMB1\Forest\Pipe4Way.png" />
+    <Resource Include="Assets\SMB1\Forest\PipeDownLeft.png" />
+    <Resource Include="Assets\SMB1\Forest\PipeDownLeftRight.png" />
+    <Resource Include="Assets\SMB1\Forest\PipeDownRight.png" />
+    <Resource Include="Assets\SMB1\Forest\PipeUpDownLeft.png" />
+    <Resource Include="Assets\SMB1\Forest\PipeUpDownRight.png" />
+    <Resource Include="Assets\SMB1\Forest\PipeUpLeft.png" />
+    <Resource Include="Assets\SMB1\Forest\PipeUpLeftRight.png" />
+    <Resource Include="Assets\SMB1\Forest\PipeUpRight.png" />
+    <Resource Include="Assets\SMB1\Forest\Right1.png" />
+    <Resource Include="Assets\SMB1\Forest\Right2.png" />
+    <Resource Include="Assets\SMB1\Forest\Right3.png" />
+    <Resource Include="Assets\SMB1\Forest\Right_2.png" />
+    <Resource Include="Assets\SMB1\Forest\Right_3.png" />
+    <Resource Include="Assets\SMB1\Forest\Right_PipeRight.png" />
+    <Resource Include="Assets\SMB1\Forest\Single.png" />
+    <Resource Include="Assets\SMB1\Forest\Top1.png" />
+    <Resource Include="Assets\SMB1\Forest\Top2.png" />
+    <Resource Include="Assets\SMB1\Forest\Top3.png" />
+    <Resource Include="Assets\SMB1\Forest\TopLeft.png" />
+    <Resource Include="Assets\SMB1\Forest\TopLeftExt.png" />
+    <Resource Include="Assets\SMB1\Forest\TopLeft_2.png" />
+    <Resource Include="Assets\SMB1\Forest\TopLeft_BottomRight.png" />
+    <Resource Include="Assets\SMB1\Forest\TopLeft_PipeLeft.png" />
+    <Resource Include="Assets\SMB1\Forest\TopLeft_PipeUp.png" />
+    <Resource Include="Assets\SMB1\Forest\TopLeft_PipeUpLeft.png" />
+    <Resource Include="Assets\SMB1\Forest\TopRight.png" />
+    <Resource Include="Assets\SMB1\Forest\TopRightExt.png" />
+    <Resource Include="Assets\SMB1\Forest\TopRight_2.png" />
+    <Resource Include="Assets\SMB1\Forest\TopRight_BottomLeft.png" />
+    <Resource Include="Assets\SMB1\Forest\TopRight_PipeRight.png" />
+    <Resource Include="Assets\SMB1\Forest\TopRight_PipeUp.png" />
+    <Resource Include="Assets\SMB1\Forest\TopRight_PipeUpRight.png" />
+    <Resource Include="Assets\SMB1\Forest\Top_3.png" />
+    <Resource Include="Assets\SMB1\Forest\Top_PipeUp.png" />
+    <Resource Include="Assets\SMB1\Forest\VerPipeBottom.png" />
+    <Resource Include="Assets\SMB1\Forest\VerPipeMid.png" />
+    <Resource Include="Assets\SMB1\Forest\VerPipeTop.png" />
+    <Resource Include="Assets\SMB1\GhostHouse\Background.png" />
+    <Resource Include="Assets\SMB1\GhostHouse\Bottom1.png" />
+    <Resource Include="Assets\SMB1\GhostHouse\Bottom2.png" />
+    <Resource Include="Assets\SMB1\GhostHouse\Bottom3.png" />
+    <Resource Include="Assets\SMB1\GhostHouse\BottomLeft.png" />
+    <Resource Include="Assets\SMB1\GhostHouse\BottomLeftExt.png" />
+    <Resource Include="Assets\SMB1\GhostHouse\BottomLeft_2.png" />
+    <Resource Include="Assets\SMB1\GhostHouse\BottomLeft_PipeDown.png" />
+    <Resource Include="Assets\SMB1\GhostHouse\BottomLeft_PipeDownLeft.png" />
+    <Resource Include="Assets\SMB1\GhostHouse\BottomLeft_PipeLeft.png" />
+    <Resource Include="Assets\SMB1\GhostHouse\BottomRight.png" />
+    <Resource Include="Assets\SMB1\GhostHouse\BottomRightExt.png" />
+    <Resource Include="Assets\SMB1\GhostHouse\BottomRight_2.png" />
+    <Resource Include="Assets\SMB1\GhostHouse\BottomRight_PipeDown.png" />
+    <Resource Include="Assets\SMB1\GhostHouse\BottomRight_PipeDownRight.png" />
+    <Resource Include="Assets\SMB1\GhostHouse\BottomRight_PipeRight.png" />
+    <Resource Include="Assets\SMB1\GhostHouse\Bottom_3.png" />
+    <Resource Include="Assets\SMB1\GhostHouse\Bottom_PipeDown.png" />
+    <Resource Include="Assets\SMB1\GhostHouse\Full1.png" />
+    <Resource Include="Assets\SMB1\GhostHouse\Full2.png" />
+    <Resource Include="Assets\SMB1\GhostHouse\Full3.png" />
+    <Resource Include="Assets\SMB1\GhostHouse\Full_3.png" />
+    <Resource Include="Assets\SMB1\GhostHouse\HorPipeLeft.png" />
+    <Resource Include="Assets\SMB1\GhostHouse\HorPipeMid1.png" />
+    <Resource Include="Assets\SMB1\GhostHouse\HorPipeMid2.png" />
+    <Resource Include="Assets\SMB1\GhostHouse\HorPipeMid3.png" />
+    <Resource Include="Assets\SMB1\GhostHouse\HorPipeMid_3.png" />
+    <Resource Include="Assets\SMB1\GhostHouse\HorPipeRight.png" />
+    <Resource Include="Assets\SMB1\GhostHouse\Left1.png" />
+    <Resource Include="Assets\SMB1\GhostHouse\Left2.png" />
+    <Resource Include="Assets\SMB1\GhostHouse\Left3.png" />
+    <Resource Include="Assets\SMB1\GhostHouse\Left_2.png" />
+    <Resource Include="Assets\SMB1\GhostHouse\Left_3.png" />
+    <Resource Include="Assets\SMB1\GhostHouse\Left_PipeLeft.png" />
+    <Resource Include="Assets\SMB1\GhostHouse\Pipe4Way.png" />
+    <Resource Include="Assets\SMB1\GhostHouse\PipeDownLeft.png" />
+    <Resource Include="Assets\SMB1\GhostHouse\PipeDownLeftRight.png" />
+    <Resource Include="Assets\SMB1\GhostHouse\PipeDownRight.png" />
+    <Resource Include="Assets\SMB1\GhostHouse\PipeUpDownLeft.png" />
+    <Resource Include="Assets\SMB1\GhostHouse\PipeUpDownRight.png" />
+    <Resource Include="Assets\SMB1\GhostHouse\PipeUpLeft.png" />
+    <Resource Include="Assets\SMB1\GhostHouse\PipeUpLeftRight.png" />
+    <Resource Include="Assets\SMB1\GhostHouse\PipeUpRight.png" />
+    <Resource Include="Assets\SMB1\GhostHouse\Right1.png" />
+    <Resource Include="Assets\SMB1\GhostHouse\Right2.png" />
+    <Resource Include="Assets\SMB1\GhostHouse\Right3.png" />
+    <Resource Include="Assets\SMB1\GhostHouse\Right_2.png" />
+    <Resource Include="Assets\SMB1\GhostHouse\Right_3.png" />
+    <Resource Include="Assets\SMB1\GhostHouse\Right_PipeRight.png" />
+    <Resource Include="Assets\SMB1\GhostHouse\Single.png" />
+    <Resource Include="Assets\SMB1\GhostHouse\Top1.png" />
+    <Resource Include="Assets\SMB1\GhostHouse\Top2.png" />
+    <Resource Include="Assets\SMB1\GhostHouse\Top3.png" />
+    <Resource Include="Assets\SMB1\GhostHouse\TopLeft.png" />
+    <Resource Include="Assets\SMB1\GhostHouse\TopLeftExt.png" />
+    <Resource Include="Assets\SMB1\GhostHouse\TopLeft_2.png" />
+    <Resource Include="Assets\SMB1\GhostHouse\TopLeft_BottomRight.png" />
+    <Resource Include="Assets\SMB1\GhostHouse\TopLeft_PipeLeft.png" />
+    <Resource Include="Assets\SMB1\GhostHouse\TopLeft_PipeUp.png" />
+    <Resource Include="Assets\SMB1\GhostHouse\TopLeft_PipeUpLeft.png" />
+    <Resource Include="Assets\SMB1\GhostHouse\TopRight.png" />
+    <Resource Include="Assets\SMB1\GhostHouse\TopRightExt.png" />
+    <Resource Include="Assets\SMB1\GhostHouse\TopRight_2.png" />
+    <Resource Include="Assets\SMB1\GhostHouse\TopRight_BottomLeft.png" />
+    <Resource Include="Assets\SMB1\GhostHouse\TopRight_PipeRight.png" />
+    <Resource Include="Assets\SMB1\GhostHouse\TopRight_PipeUp.png" />
+    <Resource Include="Assets\SMB1\GhostHouse\TopRight_PipeUpRight.png" />
+    <Resource Include="Assets\SMB1\GhostHouse\Top_3.png" />
+    <Resource Include="Assets\SMB1\GhostHouse\Top_PipeUp.png" />
+    <Resource Include="Assets\SMB1\GhostHouse\VerPipeBottom.png" />
+    <Resource Include="Assets\SMB1\GhostHouse\VerPipeMid.png" />
+    <Resource Include="Assets\SMB1\GhostHouse\VerPipeTop.png" />
+    <Resource Include="Assets\SMB1\Ground\Background.png" />
+    <Resource Include="Assets\SMB1\Ground\Bottom1.png" />
+    <Resource Include="Assets\SMB1\Ground\Bottom2.png" />
+    <Resource Include="Assets\SMB1\Ground\Bottom3.png" />
+    <Resource Include="Assets\SMB1\Ground\BottomLeft.png" />
+    <Resource Include="Assets\SMB1\Ground\BottomLeftExt.png" />
+    <Resource Include="Assets\SMB1\Ground\BottomLeft_2.png" />
+    <Resource Include="Assets\SMB1\Ground\BottomLeft_PipeDown.png" />
+    <Resource Include="Assets\SMB1\Ground\BottomLeft_PipeDownLeft.png" />
+    <Resource Include="Assets\SMB1\Ground\BottomLeft_PipeLeft.png" />
+    <Resource Include="Assets\SMB1\Ground\BottomRight.png" />
+    <Resource Include="Assets\SMB1\Ground\BottomRightExt.png" />
+    <Resource Include="Assets\SMB1\Ground\BottomRight_2.png" />
+    <Resource Include="Assets\SMB1\Ground\BottomRight_PipeDown.png" />
+    <Resource Include="Assets\SMB1\Ground\BottomRight_PipeDownRight.png" />
+    <Resource Include="Assets\SMB1\Ground\BottomRight_PipeRight.png" />
+    <Resource Include="Assets\SMB1\Ground\Bottom_3.png" />
+    <Resource Include="Assets\SMB1\Ground\Bottom_PipeDown.png" />
+    <Resource Include="Assets\SMB1\Ground\Full1.png" />
+    <Resource Include="Assets\SMB1\Ground\Full2.png" />
+    <Resource Include="Assets\SMB1\Ground\Full3.png" />
+    <Resource Include="Assets\SMB1\Ground\Full_3.png" />
+    <Resource Include="Assets\SMB1\Ground\HorPipeLeft.png" />
+    <Resource Include="Assets\SMB1\Ground\HorPipeMid1.png" />
+    <Resource Include="Assets\SMB1\Ground\HorPipeMid2.png" />
+    <Resource Include="Assets\SMB1\Ground\HorPipeMid3.png" />
+    <Resource Include="Assets\SMB1\Ground\HorPipeMid_3.png" />
+    <Resource Include="Assets\SMB1\Ground\HorPipeRight.png" />
+    <Resource Include="Assets\SMB1\Ground\Left1.png" />
+    <Resource Include="Assets\SMB1\Ground\Left2.png" />
+    <Resource Include="Assets\SMB1\Ground\Left3.png" />
+    <Resource Include="Assets\SMB1\Ground\Left_2.png" />
+    <Resource Include="Assets\SMB1\Ground\Left_3.png" />
+    <Resource Include="Assets\SMB1\Ground\Left_PipeLeft.png" />
+    <Resource Include="Assets\SMB1\Ground\Pipe4Way.png" />
+    <Resource Include="Assets\SMB1\Ground\PipeDownLeft.png" />
+    <Resource Include="Assets\SMB1\Ground\PipeDownLeftRight.png" />
+    <Resource Include="Assets\SMB1\Ground\PipeDownRight.png" />
+    <Resource Include="Assets\SMB1\Ground\PipeUpDownLeft.png" />
+    <Resource Include="Assets\SMB1\Ground\PipeUpDownRight.png" />
+    <Resource Include="Assets\SMB1\Ground\PipeUpLeft.png" />
+    <Resource Include="Assets\SMB1\Ground\PipeUpLeftRight.png" />
+    <Resource Include="Assets\SMB1\Ground\PipeUpRight.png" />
+    <Resource Include="Assets\SMB1\Ground\Right1.png" />
+    <Resource Include="Assets\SMB1\Ground\Right2.png" />
+    <Resource Include="Assets\SMB1\Ground\Right3.png" />
+    <Resource Include="Assets\SMB1\Ground\Right_2.png" />
+    <Resource Include="Assets\SMB1\Ground\Right_3.png" />
+    <Resource Include="Assets\SMB1\Ground\Right_PipeRight.png" />
+    <Resource Include="Assets\SMB1\Ground\Single.png" />
+    <Resource Include="Assets\SMB1\Ground\Top1.png" />
+    <Resource Include="Assets\SMB1\Ground\Top2.png" />
+    <Resource Include="Assets\SMB1\Ground\Top3.png" />
+    <Resource Include="Assets\SMB1\Ground\TopLeft.png" />
+    <Resource Include="Assets\SMB1\Ground\TopLeftExt.png" />
+    <Resource Include="Assets\SMB1\Ground\TopLeft_2.png" />
+    <Resource Include="Assets\SMB1\Ground\TopLeft_BottomRight.png" />
+    <Resource Include="Assets\SMB1\Ground\TopLeft_PipeLeft.png" />
+    <Resource Include="Assets\SMB1\Ground\TopLeft_PipeUp.png" />
+    <Resource Include="Assets\SMB1\Ground\TopLeft_PipeUpLeft.png" />
+    <Resource Include="Assets\SMB1\Ground\TopRight.png" />
+    <Resource Include="Assets\SMB1\Ground\TopRightExt.png" />
+    <Resource Include="Assets\SMB1\Ground\TopRight_2.png" />
+    <Resource Include="Assets\SMB1\Ground\TopRight_BottomLeft.png" />
+    <Resource Include="Assets\SMB1\Ground\TopRight_PipeRight.png" />
+    <Resource Include="Assets\SMB1\Ground\TopRight_PipeUp.png" />
+    <Resource Include="Assets\SMB1\Ground\TopRight_PipeUpRight.png" />
+    <Resource Include="Assets\SMB1\Ground\Top_3.png" />
+    <Resource Include="Assets\SMB1\Ground\Top_PipeUp.png" />
+    <Resource Include="Assets\SMB1\Ground\VerPipeBottom.png" />
+    <Resource Include="Assets\SMB1\Ground\VerPipeMid.png" />
+    <Resource Include="Assets\SMB1\Ground\VerPipeTop.png" />
+    <Resource Include="Assets\SMB1\Sky\Background.png" />
+    <Resource Include="Assets\SMB1\Sky\Bottom1.png" />
+    <Resource Include="Assets\SMB1\Sky\Bottom2.png" />
+    <Resource Include="Assets\SMB1\Sky\Bottom3.png" />
+    <Resource Include="Assets\SMB1\Sky\BottomLeft.png" />
+    <Resource Include="Assets\SMB1\Sky\BottomLeftExt.png" />
+    <Resource Include="Assets\SMB1\Sky\BottomLeft_2.png" />
+    <Resource Include="Assets\SMB1\Sky\BottomLeft_PipeDown.png" />
+    <Resource Include="Assets\SMB1\Sky\BottomLeft_PipeDownLeft.png" />
+    <Resource Include="Assets\SMB1\Sky\BottomLeft_PipeLeft.png" />
+    <Resource Include="Assets\SMB1\Sky\BottomRight.png" />
+    <Resource Include="Assets\SMB1\Sky\BottomRightExt.png" />
+    <Resource Include="Assets\SMB1\Sky\BottomRight_2.png" />
+    <Resource Include="Assets\SMB1\Sky\BottomRight_PipeDown.png" />
+    <Resource Include="Assets\SMB1\Sky\BottomRight_PipeDownRight.png" />
+    <Resource Include="Assets\SMB1\Sky\BottomRight_PipeRight.png" />
+    <Resource Include="Assets\SMB1\Sky\Bottom_3.png" />
+    <Resource Include="Assets\SMB1\Sky\Bottom_PipeDown.png" />
+    <Resource Include="Assets\SMB1\Sky\Full1.png" />
+    <Resource Include="Assets\SMB1\Sky\Full2.png" />
+    <Resource Include="Assets\SMB1\Sky\Full3.png" />
+    <Resource Include="Assets\SMB1\Sky\Full_3.png" />
+    <Resource Include="Assets\SMB1\Sky\HorPipeLeft.png" />
+    <Resource Include="Assets\SMB1\Sky\HorPipeMid1.png" />
+    <Resource Include="Assets\SMB1\Sky\HorPipeMid2.png" />
+    <Resource Include="Assets\SMB1\Sky\HorPipeMid3.png" />
+    <Resource Include="Assets\SMB1\Sky\HorPipeMid_3.png" />
+    <Resource Include="Assets\SMB1\Sky\HorPipeRight.png" />
+    <Resource Include="Assets\SMB1\Sky\Left1.png" />
+    <Resource Include="Assets\SMB1\Sky\Left2.png" />
+    <Resource Include="Assets\SMB1\Sky\Left3.png" />
+    <Resource Include="Assets\SMB1\Sky\Left_2.png" />
+    <Resource Include="Assets\SMB1\Sky\Left_3.png" />
+    <Resource Include="Assets\SMB1\Sky\Left_PipeLeft.png" />
+    <Resource Include="Assets\SMB1\Sky\Pipe4Way.png" />
+    <Resource Include="Assets\SMB1\Sky\PipeDownLeft.png" />
+    <Resource Include="Assets\SMB1\Sky\PipeDownLeftRight.png" />
+    <Resource Include="Assets\SMB1\Sky\PipeDownRight.png" />
+    <Resource Include="Assets\SMB1\Sky\PipeUpDownLeft.png" />
+    <Resource Include="Assets\SMB1\Sky\PipeUpDownRight.png" />
+    <Resource Include="Assets\SMB1\Sky\PipeUpLeft.png" />
+    <Resource Include="Assets\SMB1\Sky\PipeUpLeftRight.png" />
+    <Resource Include="Assets\SMB1\Sky\PipeUpRight.png" />
+    <Resource Include="Assets\SMB1\Sky\Right1.png" />
+    <Resource Include="Assets\SMB1\Sky\Right2.png" />
+    <Resource Include="Assets\SMB1\Sky\Right3.png" />
+    <Resource Include="Assets\SMB1\Sky\Right_2.png" />
+    <Resource Include="Assets\SMB1\Sky\Right_3.png" />
+    <Resource Include="Assets\SMB1\Sky\Right_PipeRight.png" />
+    <Resource Include="Assets\SMB1\Sky\Single.png" />
+    <Resource Include="Assets\SMB1\Sky\Top1.png" />
+    <Resource Include="Assets\SMB1\Sky\Top2.png" />
+    <Resource Include="Assets\SMB1\Sky\Top3.png" />
+    <Resource Include="Assets\SMB1\Sky\TopLeft.png" />
+    <Resource Include="Assets\SMB1\Sky\TopLeftExt.png" />
+    <Resource Include="Assets\SMB1\Sky\TopLeft_2.png" />
+    <Resource Include="Assets\SMB1\Sky\TopLeft_BottomRight.png" />
+    <Resource Include="Assets\SMB1\Sky\TopLeft_PipeLeft.png" />
+    <Resource Include="Assets\SMB1\Sky\TopLeft_PipeUp.png" />
+    <Resource Include="Assets\SMB1\Sky\TopLeft_PipeUpLeft.png" />
+    <Resource Include="Assets\SMB1\Sky\TopRight.png" />
+    <Resource Include="Assets\SMB1\Sky\TopRightExt.png" />
+    <Resource Include="Assets\SMB1\Sky\TopRight_2.png" />
+    <Resource Include="Assets\SMB1\Sky\TopRight_BottomLeft.png" />
+    <Resource Include="Assets\SMB1\Sky\TopRight_PipeRight.png" />
+    <Resource Include="Assets\SMB1\Sky\TopRight_PipeUp.png" />
+    <Resource Include="Assets\SMB1\Sky\TopRight_PipeUpRight.png" />
+    <Resource Include="Assets\SMB1\Sky\Top_3.png" />
+    <Resource Include="Assets\SMB1\Sky\Top_PipeUp.png" />
+    <Resource Include="Assets\SMB1\Sky\VerPipeBottom.png" />
+    <Resource Include="Assets\SMB1\Sky\VerPipeMid.png" />
+    <Resource Include="Assets\SMB1\Sky\VerPipeTop.png" />
+    <Resource Include="Assets\SMB1\Snow\Background.png" />
+    <Resource Include="Assets\SMB1\Snow\Bottom1.png" />
+    <Resource Include="Assets\SMB1\Snow\Bottom2.png" />
+    <Resource Include="Assets\SMB1\Snow\Bottom3.png" />
+    <Resource Include="Assets\SMB1\Snow\BottomLeft.png" />
+    <Resource Include="Assets\SMB1\Snow\BottomLeftExt.png" />
+    <Resource Include="Assets\SMB1\Snow\BottomLeft_2.png" />
+    <Resource Include="Assets\SMB1\Snow\BottomLeft_PipeDown.png" />
+    <Resource Include="Assets\SMB1\Snow\BottomLeft_PipeDownLeft.png" />
+    <Resource Include="Assets\SMB1\Snow\BottomLeft_PipeLeft.png" />
+    <Resource Include="Assets\SMB1\Snow\BottomRight.png" />
+    <Resource Include="Assets\SMB1\Snow\BottomRightExt.png" />
+    <Resource Include="Assets\SMB1\Snow\BottomRight_2.png" />
+    <Resource Include="Assets\SMB1\Snow\BottomRight_PipeDown.png" />
+    <Resource Include="Assets\SMB1\Snow\BottomRight_PipeDownRight.png" />
+    <Resource Include="Assets\SMB1\Snow\BottomRight_PipeRight.png" />
+    <Resource Include="Assets\SMB1\Snow\Bottom_3.png" />
+    <Resource Include="Assets\SMB1\Snow\Bottom_PipeDown.png" />
+    <Resource Include="Assets\SMB1\Snow\Full1.png" />
+    <Resource Include="Assets\SMB1\Snow\Full2.png" />
+    <Resource Include="Assets\SMB1\Snow\Full3.png" />
+    <Resource Include="Assets\SMB1\Snow\Full_3.png" />
+    <Resource Include="Assets\SMB1\Snow\HorPipeLeft.png" />
+    <Resource Include="Assets\SMB1\Snow\HorPipeMid1.png" />
+    <Resource Include="Assets\SMB1\Snow\HorPipeMid2.png" />
+    <Resource Include="Assets\SMB1\Snow\HorPipeMid3.png" />
+    <Resource Include="Assets\SMB1\Snow\HorPipeMid_3.png" />
+    <Resource Include="Assets\SMB1\Snow\HorPipeRight.png" />
+    <Resource Include="Assets\SMB1\Snow\Left1.png" />
+    <Resource Include="Assets\SMB1\Snow\Left2.png" />
+    <Resource Include="Assets\SMB1\Snow\Left3.png" />
+    <Resource Include="Assets\SMB1\Snow\Left_2.png" />
+    <Resource Include="Assets\SMB1\Snow\Left_3.png" />
+    <Resource Include="Assets\SMB1\Snow\Left_PipeLeft.png" />
+    <Resource Include="Assets\SMB1\Snow\Pipe4Way.png" />
+    <Resource Include="Assets\SMB1\Snow\PipeDownLeft.png" />
+    <Resource Include="Assets\SMB1\Snow\PipeDownLeftRight.png" />
+    <Resource Include="Assets\SMB1\Snow\PipeDownRight.png" />
+    <Resource Include="Assets\SMB1\Snow\PipeUpDownLeft.png" />
+    <Resource Include="Assets\SMB1\Snow\PipeUpDownRight.png" />
+    <Resource Include="Assets\SMB1\Snow\PipeUpLeft.png" />
+    <Resource Include="Assets\SMB1\Snow\PipeUpLeftRight.png" />
+    <Resource Include="Assets\SMB1\Snow\PipeUpRight.png" />
+    <Resource Include="Assets\SMB1\Snow\Right1.png" />
+    <Resource Include="Assets\SMB1\Snow\Right2.png" />
+    <Resource Include="Assets\SMB1\Snow\Right3.png" />
+    <Resource Include="Assets\SMB1\Snow\Right_2.png" />
+    <Resource Include="Assets\SMB1\Snow\Right_3.png" />
+    <Resource Include="Assets\SMB1\Snow\Right_PipeRight.png" />
+    <Resource Include="Assets\SMB1\Snow\Single.png" />
+    <Resource Include="Assets\SMB1\Snow\Top1.png" />
+    <Resource Include="Assets\SMB1\Snow\Top2.png" />
+    <Resource Include="Assets\SMB1\Snow\Top3.png" />
+    <Resource Include="Assets\SMB1\Snow\TopLeft.png" />
+    <Resource Include="Assets\SMB1\Snow\TopLeftExt.png" />
+    <Resource Include="Assets\SMB1\Snow\TopLeft_2.png" />
+    <Resource Include="Assets\SMB1\Snow\TopLeft_BottomRight.png" />
+    <Resource Include="Assets\SMB1\Snow\TopLeft_PipeLeft.png" />
+    <Resource Include="Assets\SMB1\Snow\TopLeft_PipeUp.png" />
+    <Resource Include="Assets\SMB1\Snow\TopLeft_PipeUpLeft.png" />
+    <Resource Include="Assets\SMB1\Snow\TopRight.png" />
+    <Resource Include="Assets\SMB1\Snow\TopRightExt.png" />
+    <Resource Include="Assets\SMB1\Snow\TopRight_2.png" />
+    <Resource Include="Assets\SMB1\Snow\TopRight_BottomLeft.png" />
+    <Resource Include="Assets\SMB1\Snow\TopRight_PipeRight.png" />
+    <Resource Include="Assets\SMB1\Snow\TopRight_PipeUp.png" />
+    <Resource Include="Assets\SMB1\Snow\TopRight_PipeUpRight.png" />
+    <Resource Include="Assets\SMB1\Snow\Top_3.png" />
+    <Resource Include="Assets\SMB1\Snow\Top_PipeUp.png" />
+    <Resource Include="Assets\SMB1\Snow\VerPipeBottom.png" />
+    <Resource Include="Assets\SMB1\Snow\VerPipeMid.png" />
+    <Resource Include="Assets\SMB1\Snow\VerPipeTop.png" />
+    <Resource Include="Assets\SMB1\Underground\Background.png" />
+    <Resource Include="Assets\SMB1\Underground\Bottom1.png" />
+    <Resource Include="Assets\SMB1\Underground\Bottom2.png" />
+    <Resource Include="Assets\SMB1\Underground\Bottom3.png" />
+    <Resource Include="Assets\SMB1\Underground\BottomLeft.png" />
+    <Resource Include="Assets\SMB1\Underground\BottomLeftExt.png" />
+    <Resource Include="Assets\SMB1\Underground\BottomLeft_2.png" />
+    <Resource Include="Assets\SMB1\Underground\BottomLeft_PipeDown.png" />
+    <Resource Include="Assets\SMB1\Underground\BottomLeft_PipeDownLeft.png" />
+    <Resource Include="Assets\SMB1\Underground\BottomLeft_PipeLeft.png" />
+    <Resource Include="Assets\SMB1\Underground\BottomRight.png" />
+    <Resource Include="Assets\SMB1\Underground\BottomRightExt.png" />
+    <Resource Include="Assets\SMB1\Underground\BottomRight_2.png" />
+    <Resource Include="Assets\SMB1\Underground\BottomRight_PipeDown.png" />
+    <Resource Include="Assets\SMB1\Underground\BottomRight_PipeDownRight.png" />
+    <Resource Include="Assets\SMB1\Underground\BottomRight_PipeRight.png" />
+    <Resource Include="Assets\SMB1\Underground\Bottom_3.png" />
+    <Resource Include="Assets\SMB1\Underground\Bottom_PipeDown.png" />
+    <Resource Include="Assets\SMB1\Underground\Full1.png" />
+    <Resource Include="Assets\SMB1\Underground\Full2.png" />
+    <Resource Include="Assets\SMB1\Underground\Full3.png" />
+    <Resource Include="Assets\SMB1\Underground\Full_3.png" />
+    <Resource Include="Assets\SMB1\Underground\HorPipeLeft.png" />
+    <Resource Include="Assets\SMB1\Underground\HorPipeMid1.png" />
+    <Resource Include="Assets\SMB1\Underground\HorPipeMid2.png" />
+    <Resource Include="Assets\SMB1\Underground\HorPipeMid3.png" />
+    <Resource Include="Assets\SMB1\Underground\HorPipeMid_3.png" />
+    <Resource Include="Assets\SMB1\Underground\HorPipeRight.png" />
+    <Resource Include="Assets\SMB1\Underground\Left1.png" />
+    <Resource Include="Assets\SMB1\Underground\Left2.png" />
+    <Resource Include="Assets\SMB1\Underground\Left3.png" />
+    <Resource Include="Assets\SMB1\Underground\Left_2.png" />
+    <Resource Include="Assets\SMB1\Underground\Left_3.png" />
+    <Resource Include="Assets\SMB1\Underground\Left_PipeLeft.png" />
+    <Resource Include="Assets\SMB1\Underground\Pipe4Way.png" />
+    <Resource Include="Assets\SMB1\Underground\PipeDownLeft.png" />
+    <Resource Include="Assets\SMB1\Underground\PipeDownLeftRight.png" />
+    <Resource Include="Assets\SMB1\Underground\PipeDownRight.png" />
+    <Resource Include="Assets\SMB1\Underground\PipeUpDownLeft.png" />
+    <Resource Include="Assets\SMB1\Underground\PipeUpDownRight.png" />
+    <Resource Include="Assets\SMB1\Underground\PipeUpLeft.png" />
+    <Resource Include="Assets\SMB1\Underground\PipeUpLeftRight.png" />
+    <Resource Include="Assets\SMB1\Underground\PipeUpRight.png" />
+    <Resource Include="Assets\SMB1\Underground\Right1.png" />
+    <Resource Include="Assets\SMB1\Underground\Right2.png" />
+    <Resource Include="Assets\SMB1\Underground\Right3.png" />
+    <Resource Include="Assets\SMB1\Underground\Right_2.png" />
+    <Resource Include="Assets\SMB1\Underground\Right_3.png" />
+    <Resource Include="Assets\SMB1\Underground\Right_PipeRight.png" />
+    <Resource Include="Assets\SMB1\Underground\Single.png" />
+    <Resource Include="Assets\SMB1\Underground\Top1.png" />
+    <Resource Include="Assets\SMB1\Underground\Top2.png" />
+    <Resource Include="Assets\SMB1\Underground\Top3.png" />
+    <Resource Include="Assets\SMB1\Underground\TopLeft.png" />
+    <Resource Include="Assets\SMB1\Underground\TopLeftExt.png" />
+    <Resource Include="Assets\SMB1\Underground\TopLeft_2.png" />
+    <Resource Include="Assets\SMB1\Underground\TopLeft_BottomRight.png" />
+    <Resource Include="Assets\SMB1\Underground\TopLeft_PipeLeft.png" />
+    <Resource Include="Assets\SMB1\Underground\TopLeft_PipeUp.png" />
+    <Resource Include="Assets\SMB1\Underground\TopLeft_PipeUpLeft.png" />
+    <Resource Include="Assets\SMB1\Underground\TopRight.png" />
+    <Resource Include="Assets\SMB1\Underground\TopRightExt.png" />
+    <Resource Include="Assets\SMB1\Underground\TopRight_2.png" />
+    <Resource Include="Assets\SMB1\Underground\TopRight_BottomLeft.png" />
+    <Resource Include="Assets\SMB1\Underground\TopRight_PipeRight.png" />
+    <Resource Include="Assets\SMB1\Underground\TopRight_PipeUp.png" />
+    <Resource Include="Assets\SMB1\Underground\TopRight_PipeUpRight.png" />
+    <Resource Include="Assets\SMB1\Underground\Top_3.png" />
+    <Resource Include="Assets\SMB1\Underground\Top_PipeUp.png" />
+    <Resource Include="Assets\SMB1\Underground\VerPipeBottom.png" />
+    <Resource Include="Assets\SMB1\Underground\VerPipeMid.png" />
+    <Resource Include="Assets\SMB1\Underground\VerPipeTop.png" />
+    <Resource Include="Assets\SMB1\Underwater\Background.png" />
+    <Resource Include="Assets\SMB1\Underwater\Bottom1.png" />
+    <Resource Include="Assets\SMB1\Underwater\Bottom2.png" />
+    <Resource Include="Assets\SMB1\Underwater\Bottom3.png" />
+    <Resource Include="Assets\SMB1\Underwater\BottomLeft.png" />
+    <Resource Include="Assets\SMB1\Underwater\BottomLeftExt.png" />
+    <Resource Include="Assets\SMB1\Underwater\BottomLeft_2.png" />
+    <Resource Include="Assets\SMB1\Underwater\BottomLeft_PipeDown.png" />
+    <Resource Include="Assets\SMB1\Underwater\BottomLeft_PipeDownLeft.png" />
+    <Resource Include="Assets\SMB1\Underwater\BottomLeft_PipeLeft.png" />
+    <Resource Include="Assets\SMB1\Underwater\BottomRight.png" />
+    <Resource Include="Assets\SMB1\Underwater\BottomRightExt.png" />
+    <Resource Include="Assets\SMB1\Underwater\BottomRight_2.png" />
+    <Resource Include="Assets\SMB1\Underwater\BottomRight_PipeDown.png" />
+    <Resource Include="Assets\SMB1\Underwater\BottomRight_PipeDownRight.png" />
+    <Resource Include="Assets\SMB1\Underwater\BottomRight_PipeRight.png" />
+    <Resource Include="Assets\SMB1\Underwater\Bottom_3.png" />
+    <Resource Include="Assets\SMB1\Underwater\Bottom_PipeDown.png" />
+    <Resource Include="Assets\SMB1\Underwater\Full1.png" />
+    <Resource Include="Assets\SMB1\Underwater\Full2.png" />
+    <Resource Include="Assets\SMB1\Underwater\Full3.png" />
+    <Resource Include="Assets\SMB1\Underwater\Full_3.png" />
+    <Resource Include="Assets\SMB1\Underwater\HorPipeLeft.png" />
+    <Resource Include="Assets\SMB1\Underwater\HorPipeMid1.png" />
+    <Resource Include="Assets\SMB1\Underwater\HorPipeMid2.png" />
+    <Resource Include="Assets\SMB1\Underwater\HorPipeMid3.png" />
+    <Resource Include="Assets\SMB1\Underwater\HorPipeMid_3.png" />
+    <Resource Include="Assets\SMB1\Underwater\HorPipeRight.png" />
+    <Resource Include="Assets\SMB1\Underwater\Left1.png" />
+    <Resource Include="Assets\SMB1\Underwater\Left2.png" />
+    <Resource Include="Assets\SMB1\Underwater\Left3.png" />
+    <Resource Include="Assets\SMB1\Underwater\Left_2.png" />
+    <Resource Include="Assets\SMB1\Underwater\Left_3.png" />
+    <Resource Include="Assets\SMB1\Underwater\Left_PipeLeft.png" />
+    <Resource Include="Assets\SMB1\Underwater\Pipe4Way.png" />
+    <Resource Include="Assets\SMB1\Underwater\PipeDownLeft.png" />
+    <Resource Include="Assets\SMB1\Underwater\PipeDownLeftRight.png" />
+    <Resource Include="Assets\SMB1\Underwater\PipeDownRight.png" />
+    <Resource Include="Assets\SMB1\Underwater\PipeUpDownLeft.png" />
+    <Resource Include="Assets\SMB1\Underwater\PipeUpDownRight.png" />
+    <Resource Include="Assets\SMB1\Underwater\PipeUpleft.png" />
+    <Resource Include="Assets\SMB1\Underwater\PipeUpLeftRight.png" />
+    <Resource Include="Assets\SMB1\Underwater\PipeUpRight.png" />
+    <Resource Include="Assets\SMB1\Underwater\Right1.png" />
+    <Resource Include="Assets\SMB1\Underwater\Right2.png" />
+    <Resource Include="Assets\SMB1\Underwater\Right3.png" />
+    <Resource Include="Assets\SMB1\Underwater\Right_2.png" />
+    <Resource Include="Assets\SMB1\Underwater\Right_3.png" />
+    <Resource Include="Assets\SMB1\Underwater\Right_PipeRight.png" />
+    <Resource Include="Assets\SMB1\Underwater\Single.png" />
+    <Resource Include="Assets\SMB1\Underwater\Top1.png" />
+    <Resource Include="Assets\SMB1\Underwater\Top2.png" />
+    <Resource Include="Assets\SMB1\Underwater\Top3.png" />
+    <Resource Include="Assets\SMB1\Underwater\TopLeft.png" />
+    <Resource Include="Assets\SMB1\Underwater\TopLeftExt.png" />
+    <Resource Include="Assets\SMB1\Underwater\TopLeft_2.png" />
+    <Resource Include="Assets\SMB1\Underwater\TopLeft_BottomRight.png" />
+    <Resource Include="Assets\SMB1\Underwater\TopLeft_PipeLeft.png" />
+    <Resource Include="Assets\SMB1\Underwater\TopLeft_PipeUp.png" />
+    <Resource Include="Assets\SMB1\Underwater\TopLeft_PipeUpLeft.png" />
+    <Resource Include="Assets\SMB1\Underwater\TopRight.png" />
+    <Resource Include="Assets\SMB1\Underwater\TopRightExt.png" />
+    <Resource Include="Assets\SMB1\Underwater\TopRight_2.png" />
+    <Resource Include="Assets\SMB1\Underwater\TopRight_BottomLeft.png" />
+    <Resource Include="Assets\SMB1\Underwater\TopRight_PipeRight.png" />
+    <Resource Include="Assets\SMB1\Underwater\TopRight_PipeUp.png" />
+    <Resource Include="Assets\SMB1\Underwater\TopRight_PipeUpRight.png" />
+    <Resource Include="Assets\SMB1\Underwater\Top_3.png" />
+    <Resource Include="Assets\SMB1\Underwater\Top_PipeUp.png" />
+    <Resource Include="Assets\SMB1\Underwater\VerPipeBottom.png" />
+    <Resource Include="Assets\SMB1\Underwater\VerPipeMid.png" />
+    <Resource Include="Assets\SMB1\Underwater\VerPipeTop.png" />
+    <Resource Include="Assets\TileEmpty.png" />
+    <Resource Include="obj\Debug\Epic Tetris %28Super Mario Maker 2%29.csproj.FileListAbsolute.txt" />
+    <Resource Include="Icon.ico" />
+    <Content Include="obj\Debug\TempPE\Properties.Resources.Designer.cs.dll" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
