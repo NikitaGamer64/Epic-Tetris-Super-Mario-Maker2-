@@ -21,26 +21,89 @@ namespace Epic_Tetris_Super_Mario_Maker_2
     {
         private readonly ImageSource[] tileImages = new ImageSource[]
         {
-            new BitmapImage(new Uri("Assets/TileEmpty.png", UriKind.Relative)),
-            new BitmapImage(new Uri("Assets/SMB1/Ground/Full1.png", UriKind.Relative)),
-            new BitmapImage(new Uri("Assets/SMB1/Ground/Full1.png", UriKind.Relative)),
-            new BitmapImage(new Uri("Assets/SMB1/Ground/Full1.png", UriKind.Relative)),
-            new BitmapImage(new Uri("Assets/SMB1/Ground/Full1.png", UriKind.Relative)),
-            new BitmapImage(new Uri("Assets/SMB1/Ground/Full1.png", UriKind.Relative)),
-            new BitmapImage(new Uri("Assets/SMB1/Ground/Full1.png", UriKind.Relative)),
-            new BitmapImage(new Uri("Assets/SMB1/Ground/Full1.png", UriKind.Relative))
-            //This is a former tile map with different algorithm.
+            new BitmapImage(new Uri("Assets/TileEmpty.png", UriKind.Relative)), //0
+            new BitmapImage(new Uri("Assets/SMB3/Ground/Bottom_3.png", UriKind.Relative)), //1
+            new BitmapImage(new Uri("Assets/SMB3/Ground/Bottom_PipeDown.png", UriKind.Relative)), //2
+            new BitmapImage(new Uri("Assets/SMB3/Ground/Bottom1.png", UriKind.Relative)), //3
+            new BitmapImage(new Uri("Assets/SMB3/Ground/Bottom2.png", UriKind.Relative)), //4
+            new BitmapImage(new Uri("Assets/SMB3/Ground/Bottom3.png", UriKind.Relative)), //5
+            new BitmapImage(new Uri("Assets/SMB3/Ground/BottomLeft.png", UriKind.Relative)), //6
+            new BitmapImage(new Uri("Assets/SMB3/Ground/BottomLeft_2.png", UriKind.Relative)), //7
+            new BitmapImage(new Uri("Assets/SMB3/Ground/BottomLeft_PipeDown.png", UriKind.Relative)), //8
+            new BitmapImage(new Uri("Assets/SMB3/Ground/BottomLeft_PipeDownLeft.png", UriKind.Relative)), //9
+            new BitmapImage(new Uri("Assets/SMB3/Ground/BottomLeft_PipeLeft.png", UriKind.Relative)), //10
+            new BitmapImage(new Uri("Assets/SMB3/Ground/BottomLeftExt.png", UriKind.Relative)), //11
+            new BitmapImage(new Uri("Assets/SMB3/Ground/BottomRight.png", UriKind.Relative)), //12
+            new BitmapImage(new Uri("Assets/SMB3/Ground/BottomRight_2.png", UriKind.Relative)), //13
+            new BitmapImage(new Uri("Assets/SMB3/Ground/BottomRight_PipeDown.png", UriKind.Relative)), //14
+            new BitmapImage(new Uri("Assets/SMB3/Ground/BottomRight_PipeDownRight.png", UriKind.Relative)), //15
+            new BitmapImage(new Uri("Assets/SMB3/Ground/BottomRight_PipeRight.png", UriKind.Relative)), //16
+            new BitmapImage(new Uri("Assets/SMB3/Ground/BottomRightExt.png", UriKind.Relative)), //17
+            new BitmapImage(new Uri("Assets/SMB3/Ground/Full_3.png", UriKind.Relative)), //18
+            new BitmapImage(new Uri("Assets/SMB3/Ground/Full1.png", UriKind.Relative)), //19
+            new BitmapImage(new Uri("Assets/SMB3/Ground/Full2.png", UriKind.Relative)), //20
+            new BitmapImage(new Uri("Assets/SMB3/Ground/Full3.png", UriKind.Relative)), //21
+            new BitmapImage(new Uri("Assets/SMB3/Ground/HorPipeLeft.png", UriKind.Relative)), //22
+            new BitmapImage(new Uri("Assets/SMB3/Ground/HorPipeMid_3.png", UriKind.Relative)), //23
+            new BitmapImage(new Uri("Assets/SMB3/Ground/HorPipeMid1.png", UriKind.Relative)), //24
+            new BitmapImage(new Uri("Assets/SMB3/Ground/HorPipeMid2.png", UriKind.Relative)), //25
+            new BitmapImage(new Uri("Assets/SMB3/Ground/HorPipeMid3.png", UriKind.Relative)), //26
+            new BitmapImage(new Uri("Assets/SMB3/Ground/HorPipeRight.png", UriKind.Relative)), //27
+            new BitmapImage(new Uri("Assets/SMB3/Ground/Left_2.png", UriKind.Relative)), //28
+            new BitmapImage(new Uri("Assets/SMB3/Ground/Left_3.png", UriKind.Relative)), //29
+            new BitmapImage(new Uri("Assets/SMB3/Ground/Left_PipeLeft.png", UriKind.Relative)), //30
+            new BitmapImage(new Uri("Assets/SMB3/Ground/Left1.png", UriKind.Relative)), //31
+            new BitmapImage(new Uri("Assets/SMB3/Ground/Left2.png", UriKind.Relative)), //32
+            new BitmapImage(new Uri("Assets/SMB3/Ground/Left3.png", UriKind.Relative)), //33
+            new BitmapImage(new Uri("Assets/SMB3/Ground/Pipe4Way.png", UriKind.Relative)), //34
+            new BitmapImage(new Uri("Assets/SMB3/Ground/PipeDownLeft.png", UriKind.Relative)), //35
+            new BitmapImage(new Uri("Assets/SMB3/Ground/PipeDownLeftRight.png", UriKind.Relative)), //36
+            new BitmapImage(new Uri("Assets/SMB3/Ground/PipeDownRight.png", UriKind.Relative)), //37
+            new BitmapImage(new Uri("Assets/SMB3/Ground/PipeUpDownLeft.png", UriKind.Relative)), //38
+            new BitmapImage(new Uri("Assets/SMB3/Ground/PipeUpDownRight.png", UriKind.Relative)), //39
+            new BitmapImage(new Uri("Assets/SMB3/Ground/PipeUpLeft.png", UriKind.Relative)), //40
+            new BitmapImage(new Uri("Assets/SMB3/Ground/PipeUpLeftRight.png", UriKind.Relative)), //41
+            new BitmapImage(new Uri("Assets/SMB3/Ground/PipeUpRight.png", UriKind.Relative)), //42
+            new BitmapImage(new Uri("Assets/SMB3/Ground/Right_2.png", UriKind.Relative)), //43
+            new BitmapImage(new Uri("Assets/SMB3/Ground/Right_3.png", UriKind.Relative)), //44
+            new BitmapImage(new Uri("Assets/SMB3/Ground/Right_PipeRight.png", UriKind.Relative)), //45
+            new BitmapImage(new Uri("Assets/SMB3/Ground/Right1.png", UriKind.Relative)), //46
+            new BitmapImage(new Uri("Assets/SMB3/Ground/Right2.png", UriKind.Relative)), //47
+            new BitmapImage(new Uri("Assets/SMB3/Ground/Right3.png", UriKind.Relative)), //48
+            new BitmapImage(new Uri("Assets/SMB3/Ground/Single.png", UriKind.Relative)), //49
+            new BitmapImage(new Uri("Assets/SMB3/Ground/Top_3.png", UriKind.Relative)), //50
+            new BitmapImage(new Uri("Assets/SMB3/Ground/Top_PipeUp.png", UriKind.Relative)), //51
+            new BitmapImage(new Uri("Assets/SMB3/Ground/Top1.png", UriKind.Relative)), //52
+            new BitmapImage(new Uri("Assets/SMB3/Ground/Top2.png", UriKind.Relative)), //53
+            new BitmapImage(new Uri("Assets/SMB3/Ground/Top3.png", UriKind.Relative)), //54
+            new BitmapImage(new Uri("Assets/SMB3/Ground/TopLeft.png", UriKind.Relative)), //55
+            new BitmapImage(new Uri("Assets/SMB3/Ground/TopLeft_2.png", UriKind.Relative)), //56
+            new BitmapImage(new Uri("Assets/SMB3/Ground/TopLeft_BottomRight.png", UriKind.Relative)), //57
+            new BitmapImage(new Uri("Assets/SMB3/Ground/TopLeft_PipeLeft.png", UriKind.Relative)), //58
+            new BitmapImage(new Uri("Assets/SMB3/Ground/TopLeft_PipeUp.png", UriKind.Relative)), //59
+            new BitmapImage(new Uri("Assets/SMB3/Ground/TopLeft_PipeUpLeft.png", UriKind.Relative)), //60
+            new BitmapImage(new Uri("Assets/SMB3/Ground/TopLeftExt.png", UriKind.Relative)), //61
+            new BitmapImage(new Uri("Assets/SMB3/Ground/TopRight.png", UriKind.Relative)), //62
+            new BitmapImage(new Uri("Assets/SMB3/Ground/TopRight_2.png", UriKind.Relative)), //63
+            new BitmapImage(new Uri("Assets/SMB3/Ground/TopRight_BottomLeft.png", UriKind.Relative)), //64
+            new BitmapImage(new Uri("Assets/SMB3/Ground/TopRight_PipeRight.png", UriKind.Relative)), //65
+            new BitmapImage(new Uri("Assets/SMB3/Ground/TopRight_PipeUp.png", UriKind.Relative)), //66
+            new BitmapImage(new Uri("Assets/SMB3/Ground/TopRight_PipeUpRight.png", UriKind.Relative)), //67
+            new BitmapImage(new Uri("Assets/SMB3/Ground/TopRightExt.png", UriKind.Relative)), //68
+            new BitmapImage(new Uri("Assets/SMB3/Ground/VerPipeBottom.png", UriKind.Relative)), //69
+            new BitmapImage(new Uri("Assets/SMB3/Ground/VerPipeMid.png", UriKind.Relative)), //70
+            new BitmapImage(new Uri("Assets/SMB3/Ground/VerPipeUp.png", UriKind.Relative)) //71
         };
         private readonly ImageSource[] blockImages = new ImageSource[]
         {
             new BitmapImage(new Uri("Assets/Block-Empty.png", UriKind.Relative)),
-            new BitmapImage(new Uri("Assets/SMB1/Ground/Block-I.png", UriKind.Relative)),
-            new BitmapImage(new Uri("Assets/SMB1/Ground/Block-J.png", UriKind.Relative)),
-            new BitmapImage(new Uri("Assets/SMB1/Ground/Block-L.png", UriKind.Relative)),
-            new BitmapImage(new Uri("Assets/SMB1/Ground/Block-O.png", UriKind.Relative)),
-            new BitmapImage(new Uri("Assets/SMB1/Ground/Block-S.png", UriKind.Relative)),
-            new BitmapImage(new Uri("Assets/SMB1/Ground/Block-T.png", UriKind.Relative)),
-            new BitmapImage(new Uri("Assets/SMB1/Ground/Block-Z.png", UriKind.Relative)),
+            new BitmapImage(new Uri("Assets/SMB3/Ground/Block-I.png", UriKind.Relative)),
+            new BitmapImage(new Uri("Assets/SMB3/Ground/Block-J.png", UriKind.Relative)),
+            new BitmapImage(new Uri("Assets/SMB3/Ground/Block-L.png", UriKind.Relative)),
+            new BitmapImage(new Uri("Assets/SMB3/Ground/Block-O.png", UriKind.Relative)),
+            new BitmapImage(new Uri("Assets/SMB3/Ground/Block-S.png", UriKind.Relative)),
+            new BitmapImage(new Uri("Assets/SMB3/Ground/Block-T.png", UriKind.Relative)),
+            new BitmapImage(new Uri("Assets/SMB3/Ground/Block-Z.png", UriKind.Relative)),
             //This is a future set of blocks which will appear in Hold and Next.
         };
 

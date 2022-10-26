@@ -18,5 +18,6 @@ namespace Epic_Tetris_Super_Mario_Maker_2
         public override int Id => 1;
         protected override Position StartOffset => new Position(-1, 3);
         protected override Position[][] Tiles => tiles;
+        protected int[] TileID = {22,24,24,27};
     }
 }

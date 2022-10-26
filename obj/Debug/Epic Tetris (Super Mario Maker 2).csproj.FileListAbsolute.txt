@@ -30,3 +30,4 @@ C:\Users\admin\source\repos\Epic Tetris (Super Mario Maker 2)\Epic Tetris (Super
 C:\Users\admin\source\repos\Epic Tetris (Super Mario Maker 2)\Epic Tetris (Super Mario Maker 2)\obj\Debug\Epic Tetris (Super Mario Maker 2).exe.config
 C:\Users\admin\source\repos\Epic Tetris (Super Mario Maker 2)\Epic Tetris (Super Mario Maker 2)\obj\Debug\Epic Tetris (Super Mario Maker 2).exe
 C:\Users\admin\source\repos\Epic Tetris (Super Mario Maker 2)\Epic Tetris (Super Mario Maker 2)\obj\Debug\Epic Tetris (Super Mario Maker 2).pdb
+C:\Users\admin\source\repos\Epic Tetris (Super Mario Maker 2)\Epic Tetris (Super Mario Maker 2)\obj\Debug\Epic Tetris (Super Mario Maker 2).csproj.AssemblyReference.cache
