@@ -16,7 +16,16 @@ namespace Epic_Tetris_Super_Mario_Maker_2
             new Position[] {new Position(0,1),new Position(1,1),new Position(2,0),new Position(2,1)}
         };
         public override int Id => 2;
+        private readonly MovBTex[][] tileTex = new MovBTex[][]
+        {
+            new MovBTex[] {new MovBTex(71),new MovBTex(42),new MovBTex(23),new MovBTex(27)},
+            new MovBTex[] {new MovBTex(37),new MovBTex(27),new MovBTex(70),new MovBTex(69)},
+            new MovBTex[] {new MovBTex(22),new MovBTex(23),new MovBTex(35),new MovBTex(69)},
+            new MovBTex[] {new MovBTex(71),new MovBTex(70),new MovBTex(22),new MovBTex(40)}
+        };
         protected override Position StartOffset => new Position(0, 3);
         protected override Position[][] Tiles => tiles;
+        protected override MovBTex[][] TileTex => tileTex;
+        public override int TileID => throw new NotImplementedException();
     }
 }

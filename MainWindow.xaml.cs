@@ -19,7 +19,7 @@ namespace Epic_Tetris_Super_Mario_Maker_2
     /// </summary>
     public partial class MainWindow : Window
     {
-        private readonly ImageSource[] tileImages = new ImageSource[]
+        public readonly ImageSource[] tileImages = new ImageSource[]
         {
             new BitmapImage(new Uri("Assets/TileEmpty.png", UriKind.Relative)), //0
             new BitmapImage(new Uri("Assets/SMB3/Ground/Bottom_3.png", UriKind.Relative)), //1
@@ -92,7 +92,7 @@ namespace Epic_Tetris_Super_Mario_Maker_2
             new BitmapImage(new Uri("Assets/SMB3/Ground/TopRightExt.png", UriKind.Relative)), //68
             new BitmapImage(new Uri("Assets/SMB3/Ground/VerPipeBottom.png", UriKind.Relative)), //69
             new BitmapImage(new Uri("Assets/SMB3/Ground/VerPipeMid.png", UriKind.Relative)), //70
-            new BitmapImage(new Uri("Assets/SMB3/Ground/VerPipeUp.png", UriKind.Relative)) //71
+            new BitmapImage(new Uri("Assets/SMB3/Ground/VerPipeTop.png", UriKind.Relative)) //71
         };
         private readonly ImageSource[] blockImages = new ImageSource[]
         {
@@ -156,8 +156,7 @@ namespace Epic_Tetris_Super_Mario_Maker_2
             foreach (Position p in block.TilePositions())
             {
                 imageControls[p.Row, p.Column].Opacity = 1;
-                imageControls[p.Row, p.Column].Source = tileImages[block.Id];
-                //Is this supposed to be changed?
+                imageControls[p.Row, p.Column].Source = tileImages[block.TileID];
             }
         }
         private void DrawNextBlock(BlockQueue blockQueue)
@@ -171,7 +170,7 @@ namespace Epic_Tetris_Super_Mario_Maker_2
             foreach (Position p in block.TilePositions())
             {
                 imageControls[p.Row + dropDistance, p.Column].Opacity = 0.25;
-                imageControls[p.Row + dropDistance, p.Column].Source = tileImages[block.Id];
+                imageControls[p.Row + dropDistance, p.Column].Source = tileImages[block.TileID];
             }
         }
         private void Draw(GameState gameState)

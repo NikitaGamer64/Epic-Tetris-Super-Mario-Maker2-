@@ -10,6 +10,7 @@ namespace Epic_Tetris_Super_Mario_Maker_2
     {
         protected abstract Position[][] Tiles { get; }
         protected abstract Position StartOffset { get; }
+        protected abstract MovBTex[][] TileTex { get; }
         public abstract int Id { get; }
         public abstract int TileID { get; }
         private int rotationState;

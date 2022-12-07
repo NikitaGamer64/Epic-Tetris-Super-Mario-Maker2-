@@ -67,8 +67,10 @@
     <Compile Include="Blocks\TBlock.cs" />
     <Compile Include="Blocks\ZBlock.cs" />
     <Compile Include="Main.cs" />
+    <Compile Include="BlockTextures\MovBTexs.cs" />
     <Compile Include="obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
     <Compile Include="Settings.cs" />
+    <Compile Include="BlockTextures\StabBTexs.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
