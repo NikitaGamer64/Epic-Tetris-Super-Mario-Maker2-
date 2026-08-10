@@ -7,31 +7,36 @@ namespace Epic_Tetris__Super_Mario_Maker_2_
         public int Rows { get; } //1.1. Возвращает значение строк
         public int Columns { get; } //1.1. Возвращает значение столбцов
 
-        public int this[int r, int c] //1.2. Удобная система координат для массива
+        public int this[int r, int c]
+        //1.2. Удобная система координат для массива
         {
             get => grid[r, c];
             set => grid[r, c] = value;
         }
 
-        public GameGrid(int rows, int columns) //1.3. Инициализация массива
+        public GameGrid(int rows, int columns)
+        //1.3. Инициализация массива
         {
             Rows = rows;
             Columns = columns;
             grid = new int[rows, columns];
         }
 
-        public bool IsInside(int r, int c) //1.4. Проверить, входит ли строка или столбец в игровое поле
+        public bool IsInside(int r, int c)
+        //1.4. Проверить, входит ли строка или столбец в игровое поле
         {
             return r >= 0 && r < Rows && c >= 0 && c < Columns;
         }
 
-        public bool IsEmpty(int r, int c) //1.5. Проверить, пустая ли ячейка
+        public bool IsEmpty(int r, int c)
+        //1.5. Проверить, пустая ли ячейка
         {
             return IsInside(r, c) && grid[r, c] == 0;
             //Ячейка должна быть внутри поля, и её значение должно быть 0
         }
 
-        public bool IsRowFull(int r) //1.6. Проверить, заполнена ли строка полностью
+        public bool IsRowFull(int r)
+        //1.6. Проверить, заполнена ли строка полностью
         {
             for (int c = 0; c < Columns; c++)
             {
@@ -44,7 +49,8 @@ namespace Epic_Tetris__Super_Mario_Maker_2_
             return true;
         }
 
-        public bool IsRowEmpty(int r) //1.7. Проверить, пуста ли строка
+        public bool IsRowEmpty(int r)
+        //1.7. Проверить, пуста ли строка
         {
             for (int c = 0; c < Columns; c++)
             {
@@ -55,6 +61,46 @@ namespace Epic_Tetris__Super_Mario_Maker_2_
             }
 
             return true;
-        }        
+        }
+
+        private void ClearRow(int r)
+        //2.1. Очищает строку, если она целиком заполнена
+        {
+            for (int c = 0; c < Columns; c++)
+            {
+                grid[r, c] = 0;
+            }
+        }
+
+        private void MoveRowDown(int r, int numRows)
+        //2.2. Сдвигает вниз строку над очищенной строкой
+        {
+            for (int c = 0; c < Columns; c++)
+            {
+                grid[r + numRows, c] = grid[r, c];
+                grid[r, c] = 0;
+            }
+        }
+
+        public int ClearFullRows()
+        //2.3. Отсчитывает, сколько строк было удалено, и на сколько строк вниз переместятся верхие строки
+        {
+            int cleared = 0;
+
+            for (int r = Rows - 1; r >= 0; r--)
+            //Проверяем по очереди строки, и если они полны, очищаем их и увеличиваем переменную
+            {
+                if (IsRowFull(r))
+                {
+                    cleared++;
+                }
+                else if (cleared > 0) //Если переменная больше нуля, смещаем строку вниз
+                {
+                    MoveRowDown(r, cleared);
+                }
+            }
+            //Зачем возвращаем число очищенных строк
+            return cleared;
+        }
     }
 }
