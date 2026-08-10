@@ -1,25 +1,17 @@
 
 namespace Epic_Tetris__Super_Mario_Maker_2_
 {
-    public class GameGrid //1. Класс игрового поля
+    public class GameGrid(int rows, int columns) //1. Класс игрового поля
     {
-        private readonly int[,] grid; //1.1. Двумерный массив для игрового поля
-        public int Rows { get; } //1.1. Возвращает значение строк
-        public int Columns { get; } //1.1. Возвращает значение столбцов
+        private readonly int[,] grid = new int[rows, columns]; //1.1. Двумерный массив для игрового поля
+        public int Rows { get; } = rows; //Возвращает значение строк
+        public int Columns { get; } = columns; //Возвращает значение столбцов
 
         public int this[int r, int c]
         //1.2. Удобная система координат для массива
         {
             get => grid[r, c];
             set => grid[r, c] = value;
-        }
-
-        public GameGrid(int rows, int columns)
-        //1.3. Инициализация массива
-        {
-            Rows = rows;
-            Columns = columns;
-            grid = new int[rows, columns];
         }
 
         public bool IsInside(int r, int c)
@@ -62,7 +54,7 @@ namespace Epic_Tetris__Super_Mario_Maker_2_
 
             return true;
         }
-
+        //2. Механизм очистки заполненных строк в тетрисе
         private void ClearRow(int r)
         //2.1. Очищает строку, если она целиком заполнена
         {
