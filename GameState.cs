@@ -33,6 +33,7 @@ namespace Epic_Tetris__Super_Mario_Maker_2_
         public GameGrid GameGrid { get; }
         public BlockQueue BlockQueue { get; }
         public bool GameOver { get; private set; }
+        public int Score { get; private set; }
 
         public GameState() //6.1. Инициализация сетки игрового поля и порядка блоков
         {
@@ -104,7 +105,7 @@ namespace Epic_Tetris__Super_Mario_Maker_2_
                 //После размещения блока соответствующие ячейки меняют свой номер с пустого на соответствующий блоку
             }
 
-            GameGrid.ClearFullRows();
+            Score += GameGrid.ClearFullRows();
 
             if (IsGameOver())
             {

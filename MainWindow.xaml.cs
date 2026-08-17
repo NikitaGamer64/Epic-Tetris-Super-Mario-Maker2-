@@ -108,6 +108,7 @@ namespace Epic_Tetris__Super_Mario_Maker_2_
             DrawGrid(gameState.GameGrid);
             DrawBlock(gameState.CurrentBlock);
             DrawNextBlock(gameState.BlockQueue);
+            ScoreText.Text = $"Score: {gameState.Score}";
         }
 
         private async Task GameLoop()
@@ -122,6 +123,7 @@ namespace Epic_Tetris__Super_Mario_Maker_2_
             }
 
             GameOverMenu.Visibility = Visibility.Visible;
+            FinalScoreText.Text = $"Score: {gameState.Score}";
         }
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
