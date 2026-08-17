@@ -45,6 +45,9 @@ namespace Epic_Tetris__Super_Mario_Maker_2_
         ];
 
         private readonly Image[,] imageControls; //Устанавливает связь между ID ячейки и изображением
+        private readonly int maxDelay = 1000;
+        private readonly int minDelay = 75;
+        private readonly int delayDecrease = 25;
 
         private GameState gameState = new();
 
@@ -145,7 +148,8 @@ namespace Epic_Tetris__Super_Mario_Maker_2_
 
             while (!gameState.GameOver)
             {
-                await Task.Delay(500);
+                int delay = Math.Max(minDelay, maxDelay - (gameState.Score * delayDecrease));
+                await Task.Delay(delay);
                 gameState.MoveBlockDown();
                 Draw(gameState);
             }
