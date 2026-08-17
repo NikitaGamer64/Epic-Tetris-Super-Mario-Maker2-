@@ -91,6 +91,7 @@ namespace Epic_Tetris__Super_Mario_Maker_2_
             foreach (Position p in CurrentBlock.TilePositions())
             {
                 GameGrid[p.Row, p.Column] = CurrentBlock.Id;
+                //После размещения блока соответствующие ячейки меняют свой номер с пустого на соответствующий блоку
             }
 
             GameGrid.ClearFullRows();
