@@ -18,7 +18,7 @@ namespace Epic_Tetris__Super_Mario_Maker_2_
                 currentBlock = value;
                 currentBlock.Reset();
 
-                for(int i = 0; i < 2; i++)
+                for (int i = 0; i < 2; i++)
                 {
                     currentBlock.Move(1, 0);
 
@@ -34,12 +34,15 @@ namespace Epic_Tetris__Super_Mario_Maker_2_
         public BlockQueue BlockQueue { get; }
         public bool GameOver { get; private set; }
         public int Score { get; private set; }
+        public Block HeldBlock { get; private set; }
+        public bool CanHold { get; private set; }
 
         public GameState() //6.1. Инициализация сетки игрового поля и порядка блоков
         {
             GameGrid = new GameGrid(22, 10);
             BlockQueue = new BlockQueue();
             CurrentBlock = BlockQueue.GetAndUpdate();
+            CanHold = true;
         }
 
         private bool BlockFits()
@@ -56,6 +59,25 @@ namespace Epic_Tetris__Super_Mario_Maker_2_
             return true;
         }
 
+        public void HoldBlock()
+        {
+            if (!CanHold)
+            {
+                return;
+            }
+
+            if (HeldBlock == null)
+            {
+                HeldBlock = CurrentBlock;
+                CurrentBlock = BlockQueue.GetAndUpdate();
+            }
+            else
+            {
+                (HeldBlock, CurrentBlock) = (CurrentBlock, HeldBlock);
+            }
+
+            CanHold = false;
+        }
         public void RotateBlockCW()
         //6.3. Методы вращения и перемещения блоков
         {
@@ -114,6 +136,7 @@ namespace Epic_Tetris__Super_Mario_Maker_2_
             else
             {
                 CurrentBlock = BlockQueue.GetAndUpdate();
+                CanHold = true;
             }
         }
 
