@@ -17,6 +17,16 @@ namespace Epic_Tetris__Super_Mario_Maker_2_
             {
                 currentBlock = value;
                 currentBlock.Reset();
+
+                for(int i = 0; i < 2; i++)
+                {
+                    currentBlock.Move(1, 0);
+
+                    if (!BlockFits())
+                    {
+                        currentBlock.Move(-1, 0);
+                    }
+                }
             }
         }
 
