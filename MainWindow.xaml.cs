@@ -114,6 +114,8 @@ namespace Epic_Tetris__Super_Mario_Maker_2_
                 gameState.MoveBlockDown();
                 Draw(gameState);
             }
+
+            GameOverMenu.Visibility = Visibility.Visible;
         }
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
