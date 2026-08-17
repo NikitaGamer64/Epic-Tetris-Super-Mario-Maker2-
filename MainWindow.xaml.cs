@@ -156,9 +156,11 @@ namespace Epic_Tetris__Super_Mario_Maker_2_
             await GameLoop();
         }
 
-        private void PlayAgain_Click(object sender, RoutedEventArgs e)
+        private async void PlayAgain_Click(object sender, RoutedEventArgs e)
         {
-
+            gameState = new GameState();
+            GameOverMenu.Visibility = Visibility.Hidden;
+            await GameLoop();
         }
     }
 }
