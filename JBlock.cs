@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Epic_Tetris__Super_Mario_Maker_2_
+﻿namespace Epic_Tetris__Super_Mario_Maker_2_
 {
     public class JBlock : Block
     {

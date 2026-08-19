@@ -1,4 +1,3 @@
-
 namespace Epic_Tetris__Super_Mario_Maker_2_
 {
     public class GameGrid(int rows, int columns) //1. Класс игрового поля

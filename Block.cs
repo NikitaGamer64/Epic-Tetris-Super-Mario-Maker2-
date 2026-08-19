@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Epic_Tetris__Super_Mario_Maker_2_
+﻿namespace Epic_Tetris__Super_Mario_Maker_2_
 {
     public abstract class Block //4. Общий класс для блоков
     {

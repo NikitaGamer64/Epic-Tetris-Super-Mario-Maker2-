@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-
-namespace Epic_Tetris__Super_Mario_Maker_2_
+﻿namespace Epic_Tetris__Super_Mario_Maker_2_
 {
     public class GameState
     //6. Класс состояния и механики игры
