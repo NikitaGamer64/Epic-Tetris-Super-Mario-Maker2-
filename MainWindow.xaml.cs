@@ -88,6 +88,14 @@ namespace Epic_Tetris_Super_Mario_Maker2_
                 }
             }
         }
+
+        private void DrawBlock(Block block)
+        {
+            foreach (Position p in block.TilePositions())
+            {
+                imageControls[p.Row, p.Column].Source = tileImages[block.Id];
+            }
+        }
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
 
