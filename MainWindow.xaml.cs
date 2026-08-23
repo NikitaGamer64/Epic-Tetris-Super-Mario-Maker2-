@@ -42,9 +42,39 @@ namespace Epic_Tetris_Super_Mario_Maker2_
             new BitmapImage(new Uri("Assets/Block-Z.png", UriKind.Relative)),
         ];
 
+        private readonly Image[,] imageControls; //Устанавливает связь между ID ячейки и изображением
+
+        private GameState gameState = new();
+
+        private Image[,] SetupGameCanvas(GameGrid grid)
+        //7.3. Метод, возвращающий параметры imageControls
+        {
+            Image[,] imageControls = new Image[grid.Rows, grid.Columns];
+            int cellSize = 25;
+
+            for (int r = 0; r < grid.Rows; r++)
+            {
+                for (int c = 0; c < grid.Columns; c++)
+                {
+                    Image imageControl = new()
+                    {
+                        Width = cellSize,
+                        Height = cellSize
+                    };
+
+                    Canvas.SetTop(imageControl, (r - 2) * cellSize);
+                    Canvas.SetLeft(imageControl, c * cellSize);
+                    GameCanvas.Children.Add(imageControl);
+                    imageControls[r, c] = imageControl;
+                }
+            }
+
+            return imageControls;
+        }
         public MainWindow()
         {
             InitializeComponent();
+            imageControls = SetupGameCanvas(gameState.GameGrid);
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
