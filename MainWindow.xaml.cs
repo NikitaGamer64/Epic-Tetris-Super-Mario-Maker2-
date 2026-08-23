@@ -96,6 +96,12 @@ namespace Epic_Tetris_Super_Mario_Maker2_
                 imageControls[p.Row, p.Column].Source = tileImages[block.Id];
             }
         }
+
+        private void Draw(GameState gameState)
+        {
+            DrawGrid(gameState.GameGrid);
+            DrawBlock(gameState.CurrentBlock);
+        }
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
 
@@ -103,7 +109,7 @@ namespace Epic_Tetris_Super_Mario_Maker2_
 
         private void GameCanvas_Loaded(object sender, RoutedEventArgs e)
         {
-
+            Draw(gameState);
         }
 
         private void PlayAgain_Click(object sender, RoutedEventArgs e)
