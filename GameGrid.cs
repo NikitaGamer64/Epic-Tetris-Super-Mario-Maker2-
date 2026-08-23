@@ -57,5 +57,46 @@ namespace Epic_Tetris_Super_Mario_Maker2_
 
             return true;
         }
+
+        //2. Механизм очистки заполненных строк в тетрисе
+        private void ClearRow(int r)
+        //2.1. Очищает строку, если она целиком заполнена
+        {
+            for (int c = 0; c < Columns; c++)
+            {
+                grid[r, c] = 0;
+            }
+        }
+
+        private void MoveRowDown(int r, int numRows)
+        //2.2. Сдвигает вниз строку над очищенной строкой
+        {
+            for (int c = 0; c < Columns; c++)
+            {
+                grid[r + numRows, c] = grid[r, c];
+                grid[r, c] = 0;
+            }
+        }
+
+        public int ClearFullRows()
+        //2.3. Отсчитывает, сколько строк было удалено, и на сколько строк вниз переместятся верхие строки
+        {
+            int cleared = 0;
+
+            for (int r = Rows - 1; r >= 0; r--)
+            //Проверяем по очереди строки, и если они полны, очищаем их и увеличиваем переменную
+            {
+                if (IsRowFull(r))
+                {
+                    cleared++;
+                }
+                else if (cleared > 0) //Если переменная больше нуля, смещаем строку вниз
+                {
+                    MoveRowDown(r, cleared);
+                }
+            }
+            //Зачем возвращаем число очищенных строк
+            return cleared;
+        }
     }
 }
