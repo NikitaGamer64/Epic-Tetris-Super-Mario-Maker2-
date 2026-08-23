@@ -1,4 +1,4 @@
-﻿namespace Epic_Tetris__Super_Mario_Maker_2_
+﻿namespace Epic_Tetris_Super_Mario_Maker2_
 {
     public class SBlock : Block
     {
