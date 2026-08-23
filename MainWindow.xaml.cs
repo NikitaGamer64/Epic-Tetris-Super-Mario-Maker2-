@@ -20,5 +20,20 @@ namespace Epic_Tetris_Super_Mario_Maker2_
         {
             InitializeComponent();
         }
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void GameCanvas_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void PlayAgain_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
