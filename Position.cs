@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Epic_Tetris_Super_Mario_Maker2_
+﻿namespace Epic_Tetris_Super_Mario_Maker2_
 {
     public class Position(int row, int column) //3. Класс позиций блоков в игровом поле
     {

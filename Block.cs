@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Epic_Tetris_Super_Mario_Maker2_
+﻿namespace Epic_Tetris_Super_Mario_Maker2_
 {
     public abstract class Block //4. Общий класс для блоков
     {
@@ -14,7 +10,7 @@ namespace Epic_Tetris_Super_Mario_Maker2_
         //4.3. Определение облика тайла по блоку, в котором он находился при появлении
 
         private int rotationState;
-        private Position offset;
+        private readonly Position offset;
         //4.4. Текущее состояние вращение блока и его текущие позиции
 
         public Block()

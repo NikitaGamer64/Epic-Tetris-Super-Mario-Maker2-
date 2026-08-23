@@ -1,6 +1,4 @@
-﻿using System.Configuration;
-using System.Data;
-using System.Windows;
+﻿using System.Windows;
 
 namespace Epic_Tetris_Super_Mario_Maker2_
 {
