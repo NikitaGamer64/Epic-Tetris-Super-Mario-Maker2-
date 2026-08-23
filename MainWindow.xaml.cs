@@ -77,6 +77,17 @@ namespace Epic_Tetris_Super_Mario_Maker2_
             imageControls = SetupGameCanvas(gameState.GameGrid);
         }
 
+        private void DrawGrid(GameGrid grid)
+        {
+            for (int r = 0; r < grid.Rows; r++)
+            {
+                for (int c = 0; c < grid.Columns; c++)
+                {
+                    int id = grid[r, c];
+                    imageControls[r, c].Source = tileImages[id];
+                }
+            }
+        }
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
 
