@@ -168,6 +168,9 @@ namespace Epic_Tetris_Super_Mario_Maker2_
                 case Key.C:
                     gameState.HoldBlock();
                     break;
+                case Key.Space:
+                    gameState.DropBlock();
+                    break;
                 default:
                     return;
             }
