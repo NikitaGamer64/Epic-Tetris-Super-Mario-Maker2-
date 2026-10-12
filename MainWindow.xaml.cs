@@ -13,11 +13,32 @@ namespace Epic_Tetris_Super_Mario_Maker2_
     {
         private readonly ImageSource[] tileImages = new ImageSource[256];
 
-        private void InitializeTileImages()
+        private void LoadTileAtlas()
         {
-            for (int i = 0; i < 256; i++)
+            const int tileSize = 32;
+            const int totalTiles = 256;
+
+            var atlasUri = new Uri("Assets/TileAtlas.png", UriKind.Relative);
+            BitmapImage atlas = new(atlasUri);
+
+            if ((atlas.PixelWidth % tileSize != 0) || (atlas.PixelHeight % tileSize != 0))
+                throw new Exception($"Размер атласа не кратен {tileSize}px");
+
+            int tilesX = atlas.PixelWidth / tileSize;
+            int tilesY = atlas.PixelHeight / tileSize;
+
+            if (tilesX * tilesY != totalTiles)
+                throw new Exception($"Атлас содержит {tilesX * tilesY} тайлов, а нужно {totalTiles}.");
+
+            for (int i = 0; i < totalTiles; i++)
             {
-                tileImages[i] = new BitmapImage(new Uri($"Assets/TileAtlas/Tile_{i}.png"));
+                int x = (i % tilesX) * tileSize;
+                int y = (i / tilesX) * tileSize;
+
+                tileImages[i] = new CroppedBitmap(
+                    source: atlas,
+                    sourceRect: new Int32Rect(x, y, tileSize, tileSize));
+
             }
         }
 
@@ -86,7 +107,7 @@ namespace Epic_Tetris_Super_Mario_Maker2_
         public MainWindow()
         {
             InitializeComponent();
-            InitializeTileImages();
+            LoadTileAtlas();
             imageControls = SetupGameCanvas(gameState.GameGrid);
         }
 
@@ -101,16 +122,15 @@ namespace Epic_Tetris_Super_Mario_Maker2_
 
                     if (id == 0)
                     {
-                        image.Opacity = 1;
                         image.Source = tileImages[0];
                     }
                     else
                     {
                         int mask = CalculateTileMask(grid, r, c);
-                        image.Opacity = 1;
                         image.Source = tileImages[mask];
                     }
-                    
+
+                    image.Opacity = 1;
                 }
             }
         }

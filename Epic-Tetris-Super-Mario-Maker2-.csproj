@@ -54,14 +54,7 @@
     <Resource Include="Assets\Block-S.png" />
     <Resource Include="Assets\Block-T.png" />
     <Resource Include="Assets\Block-Z.png" />
-    <Resource Include="Assets\TileBlue.png" />
-    <Resource Include="Assets\TileCyan.png" />
     <Resource Include="Assets\TileEmpty.png" />
-    <Resource Include="Assets\TileGreen.png" />
-    <Resource Include="Assets\TileOrange.png" />
-    <Resource Include="Assets\TilePurple.png" />
-    <Resource Include="Assets\TileRed.png" />
-    <Resource Include="Assets\TileYellow.png" />
   </ItemGroup>
 
 </Project>
