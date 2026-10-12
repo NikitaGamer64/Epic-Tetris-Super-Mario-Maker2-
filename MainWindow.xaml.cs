@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.IO;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -11,18 +12,28 @@ namespace Epic_Tetris_Super_Mario_Maker2_
     /// </summary>
     public partial class MainWindow : Window
     {
+        private readonly ImageSource emptyImage =
+            new BitmapImage(new Uri("Assets/TileEmpty.png", UriKind.Relative));
         private readonly ImageSource[] tileImages = new ImageSource[256];
 
         private void LoadTileAtlas()
         {
+            string currentDir = System.IO.Directory.GetCurrentDirectory();
+            string atlasPath = System.IO.Path.Combine(currentDir, "TileAtlas.png");
+
+            if (!System.IO.File.Exists(atlasPath))
+                throw new FileNotFoundException($"Файл {atlasPath} не найден.");
+
+            using var stream = System.IO.File.OpenRead(atlasPath);
+            BitmapImage atlas = new();
+            atlas.BeginInit();
+            atlas.CacheOption = BitmapCacheOption.OnLoad;
+            atlas.StreamSource = stream;
+            atlas.EndInit();
+            atlas.Freeze();
+
             const int tileSize = 32;
             const int totalTiles = 256;
-
-            var atlasUri = new Uri("Assets/TileAtlas.png", UriKind.Relative);
-            BitmapImage atlas = new(atlasUri);
-
-            if ((atlas.PixelWidth % tileSize != 0) || (atlas.PixelHeight % tileSize != 0))
-                throw new Exception($"Размер атласа не кратен {tileSize}px");
 
             int tilesX = atlas.PixelWidth / tileSize;
             int tilesY = atlas.PixelHeight / tileSize;
@@ -122,7 +133,7 @@ namespace Epic_Tetris_Super_Mario_Maker2_
 
                     if (id == 0)
                     {
-                        image.Source = tileImages[0];
+                        image.Source = emptyImage;
                     }
                     else
                     {
