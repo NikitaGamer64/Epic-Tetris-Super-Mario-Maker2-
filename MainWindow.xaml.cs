@@ -11,18 +11,15 @@ namespace Epic_Tetris_Super_Mario_Maker2_
     /// </summary>
     public partial class MainWindow : Window
     {
-        private readonly ImageSource[] tileImages =
-        //7.1. Массив, содержащий изображения ячеек (в порядке, определённом ID блока)
-        [
-            new BitmapImage(new Uri("Assets/TileEmpty.png", UriKind.Relative)),
-            new BitmapImage(new Uri("Assets/TileCyan.png", UriKind.Relative)),
-            new BitmapImage(new Uri("Assets/TileBlue.png", UriKind.Relative)),
-            new BitmapImage(new Uri("Assets/TileOrange.png", UriKind.Relative)),
-            new BitmapImage(new Uri("Assets/TileYellow.png", UriKind.Relative)),
-            new BitmapImage(new Uri("Assets/TileGreen.png", UriKind.Relative)),
-            new BitmapImage(new Uri("Assets/TilePurple.png", UriKind.Relative)),
-            new BitmapImage(new Uri("Assets/TileRed.png", UriKind.Relative))
-        ];
+        private readonly ImageSource[] tileImages = new ImageSource[256];
+
+        private void InitializeTileImages()
+        {
+            for (int i = 0; i < 256; i++)
+            {
+                tileImages[i] = new BitmapImage(new Uri($"Assets/TileAtlas/Tile_{i}.png"));
+            }
+        }
 
         private readonly ImageSource[] blockImages =
         //7.2. Массив, содержащий изображения блоков (в порядке, определённом ID блока)
@@ -43,6 +40,23 @@ namespace Epic_Tetris_Super_Mario_Maker2_
         private readonly int delayDecrease = 25;
 
         private GameState gameState = new();
+
+        private int CalculateTileMask(GameGrid grid, int row, int column)
+        {
+            int mask = 0;
+
+            if (grid.IsInside(row - 1, column) && grid[row - 1, column] != 0) mask |= 1;
+            if (grid.IsInside(row, column + 1) && grid[row, column + 1] != 0) mask |= 2;
+            if (grid.IsInside(row + 1, column) && grid[row + 1, column] != 0) mask |= 4;
+            if (grid.IsInside(row, column - 1) && grid[row, column - 1] != 0) mask |= 8;
+
+            if (grid.IsInside(row - 1, column - 1) && grid[row - 1, column - 1] != 0) mask |= 16;
+            if (grid.IsInside(row - 1, column + 1) && grid[row - 1, column + 1] != 0) mask |= 32;
+            if (grid.IsInside(row + 1, column + 1) && grid[row + 1, column + 1] != 0) mask |= 64;
+            if (grid.IsInside(row + 1, column - 1) && grid[row + 1, column - 1] != 0) mask |= 128;
+
+            return mask;
+        }
 
         private Image[,] SetupGameCanvas(GameGrid grid)
         //7.3. Метод, возвращающий параметры imageControls
@@ -72,6 +86,7 @@ namespace Epic_Tetris_Super_Mario_Maker2_
         public MainWindow()
         {
             InitializeComponent();
+            InitializeTileImages();
             imageControls = SetupGameCanvas(gameState.GameGrid);
         }
 
@@ -82,8 +97,20 @@ namespace Epic_Tetris_Super_Mario_Maker2_
                 for (int c = 0; c < grid.Columns; c++)
                 {
                     int id = grid[r, c];
-                    imageControls[r, c].Opacity = 1;
-                    imageControls[r, c].Source = tileImages[id];
+                    Image image = imageControls[r, c];
+
+                    if (id == 0)
+                    {
+                        image.Opacity = 1;
+                        image.Source = tileImages[0];
+                    }
+                    else
+                    {
+                        int mask = CalculateTileMask(grid, r, c);
+                        image.Opacity = 1;
+                        image.Source = tileImages[mask];
+                    }
+                    
                 }
             }
         }
@@ -121,9 +148,14 @@ namespace Epic_Tetris_Super_Mario_Maker2_
 
             foreach (Position p in block.TilePositions())
             {
+                int targetRow = p.Row + dropDistance;
+
+                if (targetRow >= gameState.GameGrid.Rows) continue;
+
+                int mask = CalculateTileMask(gameState.GameGrid, targetRow, p.Column);
+
                 imageControls[p.Row + dropDistance, p.Column].Opacity = 0.25;
-                imageControls[p.Row + dropDistance, p.Column].Source = tileImages[block.Id];
-                //Зависит от ID блока
+                imageControls[p.Row + dropDistance, p.Column].Source = tileImages[mask];
             }
         }
 

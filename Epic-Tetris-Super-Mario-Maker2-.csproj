@@ -11,6 +11,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Промпт боту для обновления\**" />
+    <EmbeddedResource Remove="Промпт боту для обновления\**" />
+    <None Remove="Промпт боту для обновления\**" />
+    <Page Remove="Промпт боту для обновления\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove=".gitignore" />
     <None Remove="Assets\Background.png" />
     <None Remove="Assets\Block-Empty.png" />
@@ -30,6 +37,7 @@
     <None Remove="Assets\TileRed.png" />
     <None Remove="Assets\TileYellow.png" />
     <None Remove="TetrisAssets.zip" />
+    <None Remove="Промпт боту для обновления.docx" />
   </ItemGroup>
 
   <ItemGroup>
