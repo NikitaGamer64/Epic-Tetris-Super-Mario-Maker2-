@@ -18,13 +18,14 @@ namespace Epic_Tetris_Super_Mario_Maker2_
 
         private void LoadTileAtlas()
         {
-            string currentDir = System.IO.Directory.GetCurrentDirectory();
-            string atlasPath = System.IO.Path.Combine(currentDir, "TileAtlas.png");
+            string baseDir = AppDomain.CurrentDomain.BaseDirectory;
+            DirectoryInfo projectRoot = Directory.GetParent(baseDir)!;
+            string atlasPath = Path.Combine(projectRoot.FullName, "Assets", "TileAtlas.png");
 
-            if (!System.IO.File.Exists(atlasPath))
+            if (!File.Exists(atlasPath))
                 throw new FileNotFoundException($"Файл {atlasPath} не найден.");
 
-            using var stream = System.IO.File.OpenRead(atlasPath);
+            using var stream = File.OpenRead(atlasPath);
             BitmapImage atlas = new();
             atlas.BeginInit();
             atlas.CacheOption = BitmapCacheOption.OnLoad;
@@ -34,6 +35,7 @@ namespace Epic_Tetris_Super_Mario_Maker2_
 
             const int tileSize = 32;
             const int totalTiles = 256;
+            const int tilesPerColumn = 16;
 
             int tilesX = atlas.PixelWidth / tileSize;
             int tilesY = atlas.PixelHeight / tileSize;
@@ -43,8 +45,8 @@ namespace Epic_Tetris_Super_Mario_Maker2_
 
             for (int i = 0; i < totalTiles; i++)
             {
-                int x = (i % tilesX) * tileSize;
-                int y = (i / tilesX) * tileSize;
+                int x = (i / tilesPerColumn) * tileSize;
+                int y = (i % tilesPerColumn) * tileSize;
 
                 tileImages[i] = new CroppedBitmap(
                     source: atlas,

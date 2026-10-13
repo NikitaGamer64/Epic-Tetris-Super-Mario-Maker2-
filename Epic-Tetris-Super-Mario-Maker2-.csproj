@@ -28,6 +28,7 @@
     <None Remove="Assets\Block-S.png" />
     <None Remove="Assets\Block-T.png" />
     <None Remove="Assets\Block-Z.png" />
+    <None Remove="Assets\TileAtlas.png" />
     <None Remove="Assets\TileBlue.png" />
     <None Remove="Assets\TileCyan.png" />
     <None Remove="Assets\TileEmpty.png" />
@@ -38,6 +39,12 @@
     <None Remove="Assets\TileYellow.png" />
     <None Remove="TetrisAssets.zip" />
     <None Remove="Промпт боту для обновления.docx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\TileAtlas.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
@@ -55,12 +62,6 @@
     <Resource Include="Assets\Block-T.png" />
     <Resource Include="Assets\Block-Z.png" />
     <Resource Include="Assets\TileEmpty.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="Assets\TileAtlas.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 
 </Project>
