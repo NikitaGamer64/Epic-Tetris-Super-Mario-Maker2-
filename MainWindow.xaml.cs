@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -92,6 +93,34 @@ namespace Epic_Tetris_Super_Mario_Maker2_
             return mask;
         }
 
+        private int CalculateTileMaskInBlock(Block block, Position pos)
+        {
+            bool hasTop = false;
+            bool hasRight = false;
+            bool hasBottom = false;
+            bool hasLeft = false;
+            bool hasTopLeft = false;
+            bool hasTopRight = false;
+            bool hasBottomRight = false;
+            bool hasBottomLeft = false;
+
+            foreach (Position neighbor in block.TilePositions())
+            {
+                if (neighbor.Row == pos.Row - 1 && neighbor.Column == pos.Column) hasTop = true;
+                if (neighbor.Row == pos.Row && neighbor.Column == pos.Column + 1) hasRight = true;
+                if (neighbor.Row == pos.Row + 1 && neighbor.Column == pos.Column) hasBottom = true;
+                if (neighbor.Row == pos.Row && neighbor.Column == pos.Column - 1) hasLeft = true;
+
+                if (neighbor.Row == pos.Row - 1 && neighbor.Column == pos.Column - 1) hasTopLeft = true;
+                if (neighbor.Row == pos.Row - 1 && neighbor.Column == pos.Column + 1) hasTopRight = true;
+                if (neighbor.Row == pos.Row + 1 && neighbor.Column == pos.Column + 1) hasBottomRight = true;
+                if (neighbor.Row == pos.Row + 1 && neighbor.Column == pos.Column - 1) hasBottomLeft = true;
+            }
+
+            return ((hasTop ? 1 : 0) | (hasRight ? 2 : 0) | (hasBottom ? 4 : 0) | (hasLeft ? 8 : 0))
+                | (hasTopLeft ? 16 : 0) | (hasTopRight ? 32 : 0) | (hasBottomRight ? 64 : 0) | (hasBottomLeft ? 128 : 0);
+        }
+
         private Image[,] SetupGameCanvas(GameGrid grid)
         //7.3. Метод, возвращающий параметры imageControls
         {
@@ -150,10 +179,12 @@ namespace Epic_Tetris_Super_Mario_Maker2_
 
         private void DrawBlock(Block block)
         {
-            foreach (Position p in block.TilePositions())
+            foreach (var p in block.TilePositions())
             {
+                int mask = CalculateTileMaskInBlock(block, p);
+
                 imageControls[p.Row, p.Column].Opacity = 1;
-                imageControls[p.Row, p.Column].Source = tileImages[block.Id];
+                imageControls[p.Row, p.Column].Source = tileImages[mask];
             }
         }
 
@@ -179,13 +210,13 @@ namespace Epic_Tetris_Super_Mario_Maker2_
         {
             int dropDistance = gameState.BlockDropDistance();
 
-            foreach (Position p in block.TilePositions())
+            foreach (var p in block.TilePositions())
             {
                 int targetRow = p.Row + dropDistance;
 
                 if (targetRow >= gameState.GameGrid.Rows) continue;
 
-                int mask = CalculateTileMask(gameState.GameGrid, targetRow, p.Column);
+                int mask = CalculateTileMaskInBlock(block, p);
 
                 imageControls[p.Row + dropDistance, p.Column].Opacity = 0.25;
                 imageControls[p.Row + dropDistance, p.Column].Source = tileImages[mask];
